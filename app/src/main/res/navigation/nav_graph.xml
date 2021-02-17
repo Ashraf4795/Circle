@@ -9,5 +9,5 @@
         android:id="@+id/splashsFragment"
         android:name="com.ango.circle.views.splash.SplashsFragment"
         android:label="fragment_splashs"
-        tools:layout="@layout/fragment_splashs" />
+        tools:layout="@layout/fragment_splash" />
 </navigation>
