@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Circle</string>
+    <string name="app_name">Circles</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -71,4 +71,6 @@
     <string name="description">Description</string>
     <string name="this_circle_is_for">This circle is for</string>
     <string name="description_msg">Enter your description</string>
+    <string name="splach_blue_logo_image">Blue Circular App Logo</string>
+    <string name="splach_white_logo_image">White Circular App Logo</string>
 </resources>
