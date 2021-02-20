@@ -1,4 +1,4 @@
-package com.ango.circle.views.signup.di
+package com.ango.circle.views.signup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
