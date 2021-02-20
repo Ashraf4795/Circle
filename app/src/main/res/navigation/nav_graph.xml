@@ -10,4 +10,9 @@
         android:name="com.ango.circle.views.splash.SplashsFragment"
         android:label="fragment_splashs"
         tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/singInFragment"
+        android:name="com.ango.circle.views.signin.SingInFragment"
+        android:label="fragment_sing_in"
+        tools:layout="@layout/fragment_sing_in" />
 </navigation>
