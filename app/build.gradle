@@ -121,5 +121,7 @@ dependencies {
     // Koin AndroidX ViewModel features
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
+    //circular Image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }
