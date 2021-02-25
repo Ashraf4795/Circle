@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/circle_card_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:backgroundTint="@color/light_blue"
+    app:cardCornerRadius="@dimen/high_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/circle_card_image_id"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/light_blue"
+            android:maxHeight="160dp"
+            android:minHeight="160dp"
+            app:cardCornerRadius="@dimen/high_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/circle_image_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/circle_picture" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/circle_title_text_id"
+            style="@style/big_text_style"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:maxLength="25"
+            app:layout_constraintEnd_toStartOf="@+id/circle_share_icon_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circle_card_image_id"
+            tools:text="Mount Cathriena trail"/>
+
+        <Button
+            android:id="@+id/circle_location_text_id"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLength="20"
+            android:textAppearance="@style/normal_text_style"
+            android:textColor="@color/medium_gray"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconGravity="start"
+            app:iconTint="@color/medium_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
+            tools:text="Elwadi Elgdid, Egypt" />
+
+
+        <CheckBox
+            android:id="@+id/circle_share_icon_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/ic_baseline_arrow_forward_24"
+            android:state_checked="false"
+            app:buttonTint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/circle_title_text_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/circle_card_image_id"
+            app:layout_constraintTop_toBottomOf="@+id/circle_card_image_id" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
