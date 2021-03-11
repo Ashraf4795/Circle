@@ -15,4 +15,14 @@
         android:name="com.ango.circle.views.signin.SingInFragment"
         android:label="fragment_sing_in"
         tools:layout="@layout/fragment_sing_in" />
+    <fragment
+        android:id="@+id/singUpFragment2"
+        android:name="com.ango.circle.views.signup.SingUpFragment"
+        android:label="SingUpFragment"
+        tools:layout="@layout/fragment_sing_up" />
+    <fragment
+        android:id="@+id/circleDetailsFragment"
+        android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
+        android:label="fragment_circle_details"
+        tools:layout="@layout/fragment_circle_details" />
 </navigation>

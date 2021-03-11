@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/location_icon"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="4dp"
+        app:srcCompat="@drawable/ic_baseline_location_on_24" />
+    <TextView
+        android:id="@+id/circle_location_txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Marsa Matrouh, Egypt"
+        android:maxLines="1"
+        android:maxLength="20"
+        style="@style/normal_text_style"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:ellipsize="end"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/time_icon"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="4dp"
+            app:srcCompat="@drawable/ic_baseline_access_time_filled_24" />
+        <TextView
+            android:id="@+id/circle_time_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10:30 AM"
+            android:maxLines="1"
+            android:maxLength="10"
+            style="@style/normal_text_style"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"/>
+    </LinearLayout>
+</LinearLayout>

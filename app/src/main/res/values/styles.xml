@@ -40,4 +40,8 @@
     </style>
 
 
+    <!--rounded shape-->
+    <style name="AppTheme.RoundedCornerMaterialButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:background">@drawable/rounded_shape</item>
+    </style>
 </resources>

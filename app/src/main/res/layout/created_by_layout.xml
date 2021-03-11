@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ask_for_details_btn_id">
+
+        <TextView
+            android:id="@+id/created_by_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawal_bold"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            tools:text="@string/created_by" />
+
+        <TextView
+            android:id="@+id/circle_creator_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawal_bold"
+            android:maxLength="14"
+            android:maxLines="1"
+            android:textColor="@color/dark_gray"
+            android:textSize="18sp"
+            tools:text="Ashraf" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ask_for_details_btn_id"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tajawal_bold"
+        android:paddingHorizontal="28dp"
+        android:text="@string/ask_for_details"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:textColor="@color/light_blue"
+        app:icon="@drawable/ic_share_icon"
+        app:iconGravity="start"
+        app:iconPadding="16dp"
+        app:iconTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/light_blue"
+        app:strokeWidth="2dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
