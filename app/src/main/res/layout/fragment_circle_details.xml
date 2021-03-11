@@ -188,13 +188,13 @@
             android:maxLines="1"
             android:textColor="@color/dark_gray"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_pic_id"
-            app:layout_constraintStart_toEndOf="@+id/profile_pic_id"
-            app:layout_constraintTop_toTopOf="@+id/profile_pic_id"
+            app:layout_constraintBottom_toBottomOf="@+id/notification_sender_image_id"
+            app:layout_constraintStart_toEndOf="@+id/notification_sender_image_id"
+            app:layout_constraintTop_toTopOf="@+id/notification_sender_image_id"
             tools:text="Ashraf" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_pic_id"
+            android:id="@+id/notification_sender_image_id"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="16dp"
@@ -245,9 +245,9 @@
             app:iconPadding="16dp"
             app:iconTint="@color/light_blue"
             app:cornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_pic_id"
+            app:layout_constraintBottom_toBottomOf="@+id/notification_sender_image_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/profile_pic_id"
+            app:layout_constraintTop_toTopOf="@+id/notification_sender_image_id"
             app:strokeColor="@color/light_blue"
             app:strokeWidth="2dp" />
 
@@ -261,7 +261,7 @@
             android:background="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_pic_id" />
+            app:layout_constraintTop_toBottomOf="@+id/notification_sender_image_id" />
 
         <TextView
             android:id="@+id/circle_details_txt_id"

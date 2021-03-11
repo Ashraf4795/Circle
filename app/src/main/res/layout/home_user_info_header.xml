@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/home_header_date_id"
+        android:id="@+id/notification_sender_txt_id"
         style="@style/small_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,17 +16,17 @@
         tools:text="Today 10 JAN 2021" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/notification_msg_txt_id"
         style="@style/big_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_header_date_id"
+        app:layout_constraintTop_toBottomOf="@id/notification_sender_txt_id"
         tools:text="Hello, Osama" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_pic_id"
+        android:id="@+id/notification_sender_image_id"
         android:layout_width="52dp"
         android:layout_height="52dp"
         app:civ_border_color="@color/white"
@@ -43,7 +43,7 @@
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_outline_chat_bubble_outline_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/profile_pic_id"
+        app:layout_constraintEnd_toStartOf="@id/notification_sender_image_id"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
