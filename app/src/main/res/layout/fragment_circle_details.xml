@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/circle_image_id"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="fitXY"
@@ -23,26 +23,21 @@
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="300dp"
             android:background="@drawable/gradian_shape"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/circle_code"
             style="@style/small_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:text="@string/circle_code"
             android:textColor="@color/medium_gray"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/circle_code_txt_id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/circle_code_txt_id" />
 
         <TextView
@@ -54,8 +49,8 @@
             android:maxLines="1"
             android:textColor="@color/purple"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintBottom_toBottomOf="@+id/circle_image_id"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="234256756" />
 
         <ImageButton
@@ -68,8 +63,6 @@
             android:backgroundTint="@color/light_gray"
             android:padding="8dp"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintEnd_toStartOf="@+id/date_txt_id"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,18 +71,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_shape"
             android:backgroundTint="@color/orange"
             android:fontFamily="@font/tajawal_bold"
+            android:lineSpacingExtra="4dp"
             android:maxLines="2"
-            android:paddingVertical="16dp"
             android:paddingHorizontal="8dp"
+            android:paddingVertical="16dp"
             android:text="10\n JAN"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:lineSpacingExtra="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,49 +91,155 @@
             style="@style/big_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:maxLength="25"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/circle_image_id"
             tools:text="Mount Cathriena trail" />
 
-        <Button
-            android:id="@+id/circle_location_text_id"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/location_txt_id"
+            app:layout_constraintStart_toStartOf="@+id/circle_title_text_id"
+            app:layout_constraintTop_toTopOf="@+id/location_txt_id"
+            app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
+        <TextView
+            android:id="@+id/location_txt_id"
+            style="@style/normal_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
             android:maxLength="20"
-            android:textAppearance="@style/normal_text_style"
-            android:textColor="@color/medium_gray"
-            app:icon="@drawable/ic_baseline_location_on_24"
-            app:iconGravity="start"
-            app:iconTint="@color/medium_gray"
-            app:layout_constraintBottom_toBottomOf="@id/circle_time_text_id"
+            android:maxLines="1"
             app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/circle_title_text_id"
+            app:layout_constraintStart_toEndOf="@+id/location_icon"
             app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="Elwadi Elgdid, Egypt" />
+            tools:text="Marsa Matrouh, Egypt" />
+
+        <ImageView
+            android:id="@+id/time_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/time_txt_id"
+            app:layout_constraintStart_toStartOf="@+id/location_icon"
+            app:layout_constraintTop_toTopOf="@+id/time_txt_id"
+            app:srcCompat="@drawable/ic_baseline_access_time_filled_24" />
+
+        <TextView
+            android:id="@+id/time_txt_id"
+            style="@style/normal_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="20"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="@+id/location_txt_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/time_icon"
+            app:layout_constraintTop_toBottomOf="@+id/location_txt_id"
+            tools:text="10:30 AM" />
+
+
+        <TextView
+            android:id="@+id/circle_creator_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/tajawal_bold"
+            android:maxLength="14"
+            android:maxLines="1"
+            android:textColor="@color/dark_gray"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_pic_id"
+            app:layout_constraintStart_toEndOf="@+id/profile_pic_id"
+            app:layout_constraintTop_toTopOf="@+id/profile_pic_id"
+            tools:text="Ashraf" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic_id"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/created_by_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawal_bold"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/circle_creator_txt_id"
+            app:layout_constraintStart_toStartOf="@+id/circle_creator_txt_id"
+            tools:text="@string/created_by" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_txt_id" />
 
         <Button
-            android:id="@+id/circle_time_text_id"
+            android:id="@+id/ask_for_details_btn_id"
             style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLength="20"
-            android:textAppearance="@style/normal_text_style"
-            android:textColor="@color/medium_gray"
-            app:icon="@drawable/ic_baseline_location_on_24"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/tajawal_bold"
+            android:paddingHorizontal="28dp"
+            android:text="@string/ask_for_details"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="@color/light_blue"
+            app:icon="@drawable/ic_share_icon"
             app:iconGravity="start"
-            app:iconTint="@color/medium_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/circle_location_text_id"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/circle_location_text_id"
-            app:layout_constraintTop_toBottomOf="@+id/circle_location_text_id"
-            tools:text="10:30 AM" />
+            app:iconPadding="16dp"
+            app:iconTint="@color/light_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_pic_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/profile_pic_id"
+            app:strokeColor="@color/light_blue"
+            app:strokeWidth="2dp" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pic_id" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</FrameLayout>
