@@ -20,4 +20,9 @@
         android:name="com.ango.circle.views.signup.SingUpFragment"
         android:label="SingUpFragment"
         tools:layout="@layout/fragment_sing_up" />
+    <fragment
+        android:id="@+id/circleDetailsFragment"
+        android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
+        android:label="fragment_circle_details"
+        tools:layout="@layout/fragment_circle_details" />
 </navigation>
