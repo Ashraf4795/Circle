@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.circle_details.CircleDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/gradian_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/circle_code"
+            style="@style/small_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/circle_code"
+            android:textColor="@color/medium_gray"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/circle_code_txt_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/circle_code_txt_id" />
+
+        <TextView
+            android:id="@+id/circle_code_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/tajawal_bold"
+            android:maxLines="1"
+            android:textColor="@color/purple"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            tools:text="234256756" />
+
+        <ImageButton
+            android:id="@+id/back_btn_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_shape"
+            android:backgroundTint="@color/light_gray"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintEnd_toStartOf="@+id/date_txt_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_shape"
+            android:backgroundTint="@color/orange"
+            android:fontFamily="@font/tajawal_bold"
+            android:maxLines="2"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="8dp"
+            android:text="10\n JAN"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:lineSpacingExtra="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/circle_title_text_id"
+            style="@style/big_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:maxLength="25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            tools:text="Mount Cathriena trail" />
+
+        <Button
+            android:id="@+id/circle_location_text_id"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:textAppearance="@style/normal_text_style"
+            android:textColor="@color/medium_gray"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconGravity="start"
+            app:iconTint="@color/medium_gray"
+            app:layout_constraintBottom_toBottomOf="@id/circle_time_text_id"
+            app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/circle_title_text_id"
+            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Elwadi Elgdid, Egypt" />
+
+        <Button
+            android:id="@+id/circle_time_text_id"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:textAppearance="@style/normal_text_style"
+            android:textColor="@color/medium_gray"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconGravity="start"
+            app:iconTint="@color/medium_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circle_location_text_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/circle_location_text_id"
+            app:layout_constraintTop_toBottomOf="@+id/circle_location_text_id"
+            tools:text="10:30 AM" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
