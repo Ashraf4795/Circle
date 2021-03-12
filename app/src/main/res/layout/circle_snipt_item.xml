@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/circle_card_id"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_margin="16dp"
+    android:backgroundTint="@color/light_gray"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/circle_card_image_id"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="@dimen/high_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/circle_category_image_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/circle_picture"
+                android:scaleType="fitXY"
+                tools:src="@drawable/img" />
+
+            <TextView
+                android:id="@+id/date_txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_shape"
+                android:backgroundTint="@color/orange"
+                android:fontFamily="@font/tajawal_bold"
+                android:lineSpacingExtra="4dp"
+                android:maxLines="2"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/circle_card_image_id"
+                app:layout_constraintEnd_toEndOf="@+id/circle_card_image_id"
+                app:layout_constraintStart_toStartOf="@+id/circle_card_image_id"
+                app:layout_constraintTop_toTopOf="@+id/circle_card_image_id"
+                tools:text="10\n JAN" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/circle_title_text_id"
+            style="@style/big_text_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLength="25"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circle_card_image_id"
+            app:layout_constraintTop_toTopOf="@+id/circle_card_image_id"
+            tools:text="Mount Cathriena trail" />
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/location_txt_id"
+            app:layout_constraintStart_toStartOf="@+id/circle_title_text_id"
+            app:layout_constraintTop_toTopOf="@+id/location_txt_id"
+            app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
+        <TextView
+            android:id="@+id/location_txt_id"
+            style="@style/normal_text_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="20"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@+id/location_icon"
+            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
+            tools:text="Marsa Matrouh, Egypt" />
+
+        <Button
+            android:id="@+id/join_btn_id"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/tajawal_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/join"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
+            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
