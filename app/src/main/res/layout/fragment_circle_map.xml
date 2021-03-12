@@ -20,7 +20,7 @@
 
     <FrameLayout
         android:id="@+id/circle_snipt_details_id"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="16dp"
@@ -29,6 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <include tools:layout="@layout/circle_snipt_item"/>
+        <include tools:layout="@layout/circle_snipt_item" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
