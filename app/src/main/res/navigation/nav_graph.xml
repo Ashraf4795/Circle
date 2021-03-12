@@ -25,4 +25,19 @@
         android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
         android:label="fragment_circle_details"
         tools:layout="@layout/fragment_circle_details" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.ango.circle.views.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.ango.circle.views.home.notifications.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.ango.circle.views.home.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
