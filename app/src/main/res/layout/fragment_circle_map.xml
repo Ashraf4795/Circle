@@ -22,11 +22,13 @@
         android:id="@+id/circle_snipt_details_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
         android:maxHeight="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <include tools:layout="@layout/circle_snipt_item"/>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
