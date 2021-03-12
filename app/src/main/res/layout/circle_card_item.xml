@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:backgroundTint="@color/light_blue"
     app:cardCornerRadius="@dimen/high_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,9 +32,29 @@
                 android:id="@+id/circle_category_image_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
+                tools:src="@drawable/img"
                 android:contentDescription="@string/circle_picture" />
 
+            <TextView
+                android:id="@+id/date_txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/rounded_shape"
+                android:backgroundTint="@color/orange"
+                android:fontFamily="@font/tajawal_bold"
+                android:lineSpacingExtra="4dp"
+                android:maxLines="2"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10\n JAN" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -52,39 +71,63 @@
             app:layout_constraintTop_toBottomOf="@+id/circle_card_image_id"
             tools:text="Mount Cathriena trail"/>
 
-        <Button
-            android:id="@+id/circle_location_text_id"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:maxLength="20"
-            android:textAppearance="@style/normal_text_style"
-            android:textColor="@color/medium_gray"
-            app:icon="@drawable/ic_baseline_location_on_24"
-            app:iconGravity="start"
-            app:iconTint="@color/medium_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
-            tools:text="Elwadi Elgdid, Egypt" />
 
-
-        <CheckBox
+        <ImageView
             android:id="@+id/circle_share_icon_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/ic_baseline_arrow_forward_24"
-            android:state_checked="false"
-            app:buttonTint="@android:color/white"
+            android:layout_width="19dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_share_icon"
             app:layout_constraintBottom_toBottomOf="@+id/circle_title_text_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/circle_card_image_id"
-            app:layout_constraintTop_toBottomOf="@+id/circle_card_image_id" />
+            app:layout_constraintTop_toTopOf="@+id/circle_title_text_id" />
 
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/location_txt_id"
+            app:layout_constraintStart_toStartOf="@+id/circle_title_text_id"
+            app:layout_constraintTop_toTopOf="@+id/location_txt_id"
+            app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
+        <TextView
+            android:id="@+id/location_txt_id"
+            style="@style/normal_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="20"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="@+id/circle_title_text_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/location_icon"
+            app:layout_constraintTop_toBottomOf="@+id/circle_title_text_id"
+            tools:text="Marsa Matrouh, Egypt" />
+
+        <Button
+            android:id="@+id/join_btn_id"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/tajawal_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/join"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circle_share_icon_id" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
