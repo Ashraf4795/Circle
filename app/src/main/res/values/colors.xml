@@ -19,4 +19,8 @@
     <color name="green">#74D906</color>
     <color name="baby_blue">#E5F9FF</color>
     <color name="medium_gray">#707070</color>
+    <color name ="gold">#FFA60D</color>
+    <color name = "bronz">#D17C57</color>
+    <color name = "silver">#CFCFCF</color>
+
 </resources>
