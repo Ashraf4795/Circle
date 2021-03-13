@@ -6,77 +6,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    tools:context=".views.profile.ProfileFragment">
-
-    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:backgroundTint="@color/light_blue"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        tools:context=".views.profile.ProfileFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/my_interest_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/my_interests"
+            android:textColor="@color/dark_gray"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/interest_recyclerview_id"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            tools:listitem="@layout/interest_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_interest_txt" />
 
-            <TextView
-                android:id="@+id/my_account_txt"
-                style="@style/normal_text_style"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="@string/my_account"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_back_btn_id"
-                app:layout_constraintEnd_toStartOf="@+id/profile_settings_icon_id"
-                app:layout_constraintStart_toEndOf="@+id/profile_back_btn_id"
-                app:layout_constraintTop_toTopOf="@+id/profile_back_btn_id" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/light_blue"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/profile_settings_icon_id"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/black_opacity"
-                android:padding="2dp"
-                android:src="@drawable/ic_profile_settings_icon"
-                app:layout_constraintBottom_toBottomOf="@+id/my_account_txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/my_account_txt"
-                app:tint="@color/white" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/profile_back_btn_id"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
+                <TextView
+                    android:id="@+id/my_account_txt"
+                    style="@style/normal_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/my_account"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_back_btn_id"
+                    app:layout_constraintEnd_toStartOf="@+id/profile_settings_icon_id"
+                    app:layout_constraintStart_toEndOf="@+id/profile_back_btn_id"
+                    app:layout_constraintTop_toTopOf="@+id/profile_back_btn_id" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image_id"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="24dp"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_account_txt" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/profile_settings_icon_id"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/circle_shape"
+                    android:backgroundTint="@color/black_opacity"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_profile_settings_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/my_account_txt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/my_account_txt"
+                    app:tint="@color/white" />
 
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/profile_back_btn_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image_id"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="24dp"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_account_txt" />
+
+                <include
+                    android:id="@+id/user_current_badge_icon_id"
+                    layout="@layout/badge_item"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_image_id"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_image_id"
+                    app:layout_constraintStart_toStartOf="@+id/profile_image_id"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_image_id" />
+
+                <TextView
+                    android:id="@+id/user_name_txt_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:maxLength="16"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_image_id"
+                    app:layout_constraintStart_toStartOf="@+id/profile_image_id"
+                    app:layout_constraintTop_toBottomOf="@+id/user_current_badge_icon_id"
+                    tools:text="Osama Sayed" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
