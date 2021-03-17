@@ -45,4 +45,8 @@
         android:name="com.ango.circle.views.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ango.circle.views.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
