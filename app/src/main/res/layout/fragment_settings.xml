@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/change_profile_pic_card_id"
+        android:id="@+id/profile_history_card_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -58,17 +58,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/change_profile_txt_id"
+                android:id="@+id/change_profile_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="change_profile_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/change_profile_icon"
                 app:layout_constraintStart_toEndOf="@+id/change_profile_icon"
                 app:layout_constraintTop_toTopOf="@+id/change_profile_icon"
                 android:text="@string/change_your_profile_pic" />
 
             <ImageView
-                android:id="@+id/change_profile_arrow"
+                android:id="@+id/change_profile_back_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="16dp"
@@ -76,7 +76,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/change_profile_txt_id"
+                app:layout_constraintStart_toEndOf="@+id/change_profile_text"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -93,7 +93,7 @@
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_profile_pic_card_id">
+        app:layout_constraintTop_toBottomOf="@+id/profile_history_card_id">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="change_profile_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/account_info_icon"
                 app:layout_constraintStart_toEndOf="@+id/account_info_icon"
                 app:layout_constraintTop_toTopOf="@+id/account_info_icon"
                 android:text="@string/account_info" />
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="@string/update_your_interests"
-                app:layout_constraintBottom_toBottomOf="change_profile_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/update_interest_icon"
                 app:layout_constraintStart_toEndOf="@+id/update_interest_icon"
                 app:layout_constraintTop_toTopOf="@+id/update_interest_icon" />
 
@@ -219,7 +219,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="change_profile_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/security_icon"
                 app:layout_constraintStart_toEndOf="@+id/security_icon"
                 app:layout_constraintTop_toTopOf="@+id/security_icon"
                 android:text="@string/security_info" />
