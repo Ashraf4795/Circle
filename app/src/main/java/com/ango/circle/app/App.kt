@@ -1,4 +1,4 @@
-package com.ango.circle
+package com.ango.circle.app
 
 import android.app.Application
 
