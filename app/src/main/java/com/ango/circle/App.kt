@@ -1,18 +1,23 @@
 package com.ango.circle
 
 import android.app.Application
+import com.ango.circle.core.di.coreModule
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import org.koin.core.context.startKoin
+import org.koin.java.KoinJavaComponent.inject
 
 class App : Application() {
 
-    lateinit var  firebaseAuth:FirebaseAuth
-    private set
+    val  firebaseAuth:FirebaseAuth by inject(FirebaseAuth::class.java)
 
     override fun onCreate() {
         super.onCreate()
-        firebaseAuth = Firebase.auth
+
+        startKoin{
+            modules(
+                coreModule,
+            )
+        }
     }
 
 }

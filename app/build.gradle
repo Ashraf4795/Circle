@@ -102,14 +102,15 @@ dependencies {
     //swip to refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-    //koin
     // Koin for Kotlin
-    implementation "org.koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin extended & experimental features
+    implementation "io.insert-koin:koin-core-ext:$koin_version"
     // Koin AndroidX Scope features
-    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
     // Koin AndroidX ViewModel features
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+    
     //circular Image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
