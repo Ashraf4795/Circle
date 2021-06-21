@@ -105,7 +105,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/login_btn_id"
+        android:id="@+id/signup_btn_id"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_edittext_id" />
 
     <Button
-        android:id="@+id/signup_btn_id"
+        android:id="@+id/signin_btn_id"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
         app:strokeColor="@color/light_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn_id" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn_id" />
 
     <TextView
         android:id="@+id/corporate_clickable_text_id"
@@ -162,6 +162,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_btn_id"
+        app:layout_constraintTop_toBottomOf="@+id/signin_btn_id"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

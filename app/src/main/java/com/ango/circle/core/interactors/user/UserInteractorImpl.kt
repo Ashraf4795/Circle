@@ -17,6 +17,8 @@ class UserInteractorImpl (private val firebaseAuth:FirebaseAuth): IUserInteracto
                 onCompleteListener(SuccessState("Successful"))
             }else if (it.isCanceled) {
                 onCompleteListener(ErrorState<String>(message = "SignUp is cancelled!"))
+            }else {
+                onCompleteListener(ErrorState<String>(message = it.exception?.message))
             }
         }
     }
