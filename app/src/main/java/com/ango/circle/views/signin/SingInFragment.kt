@@ -1,45 +1,84 @@
 package com.ango.circle.views.signin
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.ango.circle.R
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.ango.circle.core.state.ErrorState
+import com.ango.circle.core.state.LoadingState
+import com.ango.circle.core.state.SuccessState
+import com.ango.circle.core.utils.Validator
+import com.ango.circle.core.utils.showToast
+import com.ango.circle.databinding.FragmentSignInBinding
+import com.ango.circle.views.signup.SignUpFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SingInFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+    private val TAG = "SingInFragment"
+    private lateinit var signInBinding: FragmentSignInBinding
+    private val signInViewModel:SignInViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sing_in, container, false)
+        signInBinding = FragmentSignInBinding.inflate(inflater,container,false)
+        return signInBinding.root
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initSignInClickListener()
+        initSignInLiveDataObservation()
+    }
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SingInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun initSignInLiveDataObservation() {
+        lifecycleScope.launchWhenResumed {
+            signInViewModel.userSignInState.observe(viewLifecycleOwner){signInState ->
+                when(signInState) {
+                    is SuccessState<*> ->{
+                        Log.d(TAG, "Success ")
+                        //TODO: go to welcome user page
+                        showToast(requireActivity(),"success", Toast.LENGTH_LONG)
+                    }
+                    is LoadingState<*>->{
+                        Log.d(TAG, "Loading ")
+                        showToast(requireActivity(),"Loading", Toast.LENGTH_LONG)
+                    }
+                    is ErrorState<*> -> {
+                        //TODO: show user error message
+                        Log.d(TAG, signInState.toString() ?:"error message null")
+                    }
                 }
             }
+        }
+    }
+
+    private fun initSignInClickListener() {
+        signInBinding.loginBtnId.setOnClickListener{
+            Log.d(TAG, "clicked ")
+            val (email,password) = getUserInput()
+            signInViewModel.signInUser(email,password)
+        }
+    }
+
+    private fun getUserInput(): Pair<String,String>{
+        val userEmail = signInBinding.signinEmailInputId.text.toString()
+        val userPassword = signInBinding.signinPasswordInputId.text.toString()
+        Log.d(TAG, "user input: \nemail:$userEmail\n password:$userPassword")
+        return Pair(userEmail, userPassword)
     }
 }
