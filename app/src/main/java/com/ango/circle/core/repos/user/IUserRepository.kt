@@ -4,8 +4,8 @@ import com.ango.circle.core.state.State
 
 interface IUserRepository {
 
-    fun createUser(email:String, password:String, onCompleteListener:(State)->Unit)
-    fun signInUser(email: String,password: String,onCompleteListener: (State) -> Unit)
-    fun signOutUser()
+    suspend fun createUser(email:String, password:String, onCompleteListener:(State)->Unit)
+    suspend fun signInUser(email: String,password: String,onCompleteListener: (State) -> Unit)
+    suspend fun signOutUser()
 
 }

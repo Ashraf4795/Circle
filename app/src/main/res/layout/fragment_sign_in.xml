@@ -75,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/singin_welcome_tv">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signin_email_input_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -98,6 +99,7 @@
         app:startIconDrawable="@drawable/ic_outline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signin_password_input_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -105,7 +107,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/signup_btn_id"
+        android:id="@+id/login_btn_id"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -148,7 +150,7 @@
         app:strokeColor="@color/light_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_btn_id" />
+        app:layout_constraintTop_toBottomOf="@+id/login_btn_id" />
 
     <TextView
         android:id="@+id/corporate_clickable_text_id"
