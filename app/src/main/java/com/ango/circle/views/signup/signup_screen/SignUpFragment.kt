@@ -1,4 +1,4 @@
-package com.ango.circle.views.signup
+package com.ango.circle.views.signup.signup_screen
 
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
     val TAG = "SignUpFragment"
-    val signUpViewModel:SignUpViewModel by viewModel()
+    val signUpViewModel: SignUpViewModel by viewModel()
     private lateinit var signupBinding: FragmentSignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class SignUpFragment : Fragment() {
                     is LoadingState<*>->{
                         showToast(requireActivity(),"Loading", Toast.LENGTH_LONG)
                     }
-                    is ErrorState<*> -> {
+                    is ErrorState -> {
                         Log.d(TAG, it.message ?:"error message null")
                     }
                 }
@@ -82,7 +82,7 @@ class SignUpFragment : Fragment() {
         return true
     }
 
-    private fun getUserInput():SignUpUser{
+    private fun getUserInput(): SignUpUser {
         val userName = signupBinding.nameTextInputId.text.toString()
         val userEmail = signupBinding.emailTextInputId.text.toString()
         val userPassword = signupBinding.passwordTextInputId.text.toString()
