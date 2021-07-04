@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/singInFragment">
+    app:startDestination="@id/categoryFragment">
 
     <fragment
         android:id="@+id/splashsFragment"
@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_sign_in" />
     <fragment
         android:id="@+id/singUpFragment2"
-        android:name="com.ango.circle.views.signup.SignUpFragment"
+        android:name="com.ango.circle.views.signup.signup_screen.SignUpFragment"
         android:label="SingUpFragment"
         tools:layout="@layout/fragment_sign_up" />
     <fragment
@@ -49,4 +49,9 @@
         android:id="@+id/profileFragment"
         android:name="com.ango.circle.views.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.ango.circle.views.signup.select_category_screen.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
 </navigation>

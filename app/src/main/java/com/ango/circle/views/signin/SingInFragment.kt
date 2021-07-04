@@ -8,16 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.ango.circle.R
 import com.ango.circle.core.state.ErrorState
 import com.ango.circle.core.state.LoadingState
 import com.ango.circle.core.state.SuccessState
-import com.ango.circle.core.utils.Validator
 import com.ango.circle.core.utils.showToast
 import com.ango.circle.databinding.FragmentSignInBinding
-import com.ango.circle.views.signup.SignUpFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -58,7 +53,7 @@ class SingInFragment : Fragment() {
                         Log.d(TAG, "Loading ")
                         showToast(requireActivity(),"Loading", Toast.LENGTH_LONG)
                     }
-                    is ErrorState<*> -> {
+                    is ErrorState -> {
                         //TODO: show user error message
                         Log.d(TAG, signInState.toString() ?:"error message null")
                     }
