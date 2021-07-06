@@ -13,11 +13,11 @@ import com.ango.circle.core.state.LoadingState
 import com.ango.circle.core.state.SuccessState
 import com.ango.circle.core.utils.showToast
 import com.ango.circle.databinding.FragmentSignUpBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SignUpFragment : Fragment() {
     val TAG = "SignUpFragment"
-    val signUpViewModel: SignUpViewModel by viewModel()
+    private val signUpViewModel by sharedViewModel<SignUpViewModel>()
     private lateinit var signupBinding: FragmentSignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class SignUpFragment : Fragment() {
             val (name,email,password) = getUserInput()
             if(isValid(name,email,password)) {
                 Log.d(TAG, "user input valid")
-                signUpViewModel.signUpUser(email,password)
+                signUpViewModel.signUpUser(name,email,password)
             } else{
                 Log.d(TAG, "user input not valid")
             }

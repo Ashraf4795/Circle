@@ -127,4 +127,7 @@ dependencies {
 
     //logger
     implementation 'com.orhanobut:logger:2.2.0'
+
+    //ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

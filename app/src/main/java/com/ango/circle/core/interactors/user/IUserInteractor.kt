@@ -8,7 +8,7 @@ interface IUserInteractor {
     suspend fun signInUser(email: String,password: String,onCompleteListener: (State) -> Unit)
     suspend fun signOutUser()
 
-    suspend fun insertUser(user: User)
+    suspend fun insertUser(user: User,onCompleteListener:(State)->Unit)
     suspend fun getCategories(onCompleteListener:(State)->Unit)
 
 }

@@ -6,6 +6,7 @@ import com.ango.circle.core.data.model.User
 import com.ango.circle.core.state.ErrorState
 import com.ango.circle.core.state.State
 import com.ango.circle.core.state.SuccessState
+import com.ango.circle.core.userCollection
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
@@ -24,7 +25,7 @@ class UserInteractorImpl(
         withContext(IO) {
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    onCompleteListener(SuccessState("Successful"))
+                    onCompleteListener(SuccessState(it.result?.user?.uid ?: "user null"))
                 } else if (it.isCanceled) {
                     onCompleteListener(ErrorState(message = "SignUp is cancelled!"))
                 } else {
@@ -39,56 +40,55 @@ class UserInteractorImpl(
         password: String,
         onCompleteListener: (State) -> Unit
     ) {
-        withContext(IO) {
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    onCompleteListener(SuccessState("Welcome.."))
-                } else if (it.isCanceled) {
-                    onCompleteListener(ErrorState(message = "SignIn is cancelled!"))
-                } else {
-                    onCompleteListener(ErrorState(message = it.exception?.message))
-                }
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            if (it.isSuccessful) {
+                onCompleteListener(SuccessState("Welcome.."))
+            } else if (it.isCanceled) {
+                onCompleteListener(ErrorState(message = "SignIn is cancelled!"))
+            } else {
+                onCompleteListener(ErrorState(message = it.exception?.message))
             }
         }
     }
 
     override suspend fun signOutUser() {
-        withContext(IO) {
-            firebaseAuth.signOut()
-        }
+        firebaseAuth.signOut()
     }
 
-    override suspend fun insertUser(user: User) {
-        TODO("insert user into user collection")
+    override suspend fun insertUser(user: User, onCompleteListener: (State) -> Unit) {
+        firebaseFirestore.collection(userCollection)
+            .document(user.userId)
+            .set(user)
+            .addOnSuccessListener {
+                onCompleteListener(SuccessState(user))
+            }
+            .addOnFailureListener {
+                onCompleteListener(ErrorState(message = it.message))
+            }
     }
 
     override suspend fun getCategories(onCompleteListener: (State) -> Unit) {
-//        val data = arrayListOf(
-//            Category("abc", "Football", "Football is a game consist of 22 players", ""),
-//            Category("efg", "Basktball", "Basktball is a game consist of 10 players", ""),
-//            Category("hij", "Rugby", "Rugby is a game consist of 20 players", ""),
-//            Category("klm", "Squash", "Squash is a game consist of 2 players", ""),
-//        )
-        withContext(IO) {
-            val categoryList = mutableListOf<Category>()
-            firebaseFirestore.collection(categoryCollection)
-                .get()
-                .addOnSuccessListener {
-                    it.documents.forEach { documentSnapshot ->
-                        val category = documentSnapshot.toObject(Category::class.java)
-                        category?.let { it ->
-                            categoryList.add(it)
-                        }
+        val categoryList = mutableListOf<Category>()
+        firebaseFirestore.collection(categoryCollection)
+            .get()
+            .addOnSuccessListener {
+                it.documents.forEach { documentSnapshot ->
+                    val category = documentSnapshot.toObject(Category::class.java)
+                    category?.let { it ->
+                        categoryList.add(it)
                     }
-                    onCompleteListener(SuccessState(data = categoryList))
-
                 }
-                .addOnFailureListener {
-                    onCompleteListener(ErrorState(errorCode = it.message,message = "failed to fetch cirlce categories"))
-                }
-        }
+                onCompleteListener(SuccessState(data = categoryList))
 
-//        TODO("get categories from categories collection")
+            }
+            .addOnFailureListener {
+                onCompleteListener(
+                    ErrorState(
+                        errorCode = it.message,
+                        message = "failed to fetch cirlce categories"
+                    )
+                )
+            }
     }
 
 }
