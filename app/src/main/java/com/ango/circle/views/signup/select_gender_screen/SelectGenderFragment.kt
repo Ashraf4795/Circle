@@ -1,6 +1,7 @@
 package com.ango.circle.views.signup.select_gender_screen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,7 @@ class SelectGenderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("User","user is ${signupViewModel.user}")
     }
 
 }

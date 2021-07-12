@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/categoryFragment">
+    app:startDestination="@id/login_flow">
 
     <fragment
         android:id="@+id/splashsFragment"
@@ -40,7 +40,7 @@
         android:name="com.ango.circle.views.profile.ProfileFragment"
         android:label="ProfileFragment" />
     <navigation android:id="@+id/login_flow"
-        app:startDestination="@id/singInFragment">
+        app:startDestination="@id/singUpFragment">
         <fragment
             android:id="@+id/singInFragment"
             android:name="com.ango.circle.views.signin.SingInFragment"

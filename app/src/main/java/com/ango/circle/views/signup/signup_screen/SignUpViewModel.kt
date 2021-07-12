@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ango.circle.R
 import com.ango.circle.core.data.model.Category
 import com.ango.circle.core.data.model.SignUpUser
 import com.ango.circle.core.data.model.User
@@ -26,7 +27,7 @@ class SignUpViewModel(
     private val IO: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel(){
     private val TAG = "SignUpViewModel"
-    private lateinit var user: User
+    lateinit var user: User
 
     private val _userSignUpState = MutableLiveData<State>()
     val userSignUpState:LiveData<State> = _userSignUpState
@@ -37,22 +38,32 @@ class SignUpViewModel(
     private val _signUpInputCompletion = MutableLiveData<InCompleteInput>()
     val signUpInputCompletion = _signUpInputCompletion
 
+    private val _signUpNavigationState = MutableLiveData<Int>()
+    val signUpNavigationState = _signUpNavigationState
+
+
     private val signUpJobs = mutableListOf<Job>()
 
     fun signUpUser(signupUser: SignUpUser) {
         signUpJobs += viewModelScope.launch(IO) {
-            userRepository.signupUser(signupUser.email,signupUser.password){
-                when(it) {
+            userRepository.signupUser(signupUser.email,signupUser.password){ signUpState->
+                when(signUpState) {
                     is SuccessState<*> ->{
-                        val userId = (it.data as String)
+                        val userId = (signUpState.data as String)
                         user = User(userId = userId,userName= signupUser.name,userEmail = signupUser.email)
-                        //todo: move to select gender and profile image fragment.
+                        _userSignUpState.postValue(SuccessState(user))
+                        _signUpNavigationState.postValue(R.id.action_singUpFragment_to_selectGenderFragment)
                     }
                     is ErrorState ->{
                         //todo: display a proper error message to describe to the user what goes wrong.
+                        Log.d("User","emit value $signUpState")
+                        _userSignUpState.postValue(ErrorState(message = signUpState.message))
+                    }
+                    else -> {
+                        Log.d("User","emit value $signUpState")
                     }
                 }
-                Log.d("viewModel","emit value $it")
+                Log.d("viewModel","emit value $signUpState")
             }
         }
     }
@@ -99,7 +110,7 @@ class SignUpViewModel(
 
     fun validateUserSignupInput(signupUser: SignUpUser):Boolean {
         val isUserNameValid = validateUserName(signupUser.name)
-        val isEmailValid =    validateEmail(signupUser.email)
+        val isEmailValid    = validateEmail(signupUser.email)
         val isPasswordValid = validatePassword(signupUser.password)
 
         if(!isUserNameValid) {
