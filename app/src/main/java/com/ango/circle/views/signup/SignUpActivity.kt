@@ -7,7 +7,7 @@ import com.ango.circle.views.signup.signup_screen.SignUpViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity : AppCompatActivity() {
-    private val signUpViewModel: SignUpViewModel by viewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

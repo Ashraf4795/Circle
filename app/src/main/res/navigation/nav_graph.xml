@@ -11,16 +11,6 @@
         android:label="fragment_splashs"
         tools:layout="@layout/fragment_splash" />
     <fragment
-        android:id="@+id/singInFragment"
-        android:name="com.ango.circle.views.signin.SingInFragment"
-        android:label="fragment_sing_in"
-        tools:layout="@layout/fragment_sign_in" />
-    <fragment
-        android:id="@+id/singUpFragment2"
-        android:name="com.ango.circle.views.signup.signup_screen.SignUpFragment"
-        android:label="SingUpFragment"
-        tools:layout="@layout/fragment_sign_up" />
-    <fragment
         android:id="@+id/circleDetailsFragment"
         android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
         android:label="fragment_circle_details"
@@ -49,9 +39,39 @@
         android:id="@+id/profileFragment"
         android:name="com.ango.circle.views.profile.ProfileFragment"
         android:label="ProfileFragment" />
-    <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.ango.circle.views.signup.select_category_screen.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+    <navigation android:id="@+id/login_flow"
+        app:startDestination="@id/singInFragment">
+        <fragment
+            android:id="@+id/singInFragment"
+            android:name="com.ango.circle.views.signin.SingInFragment"
+            android:label="fragment_sing_in"
+            tools:layout="@layout/fragment_sign_in" >
+            <action
+                android:id="@+id/action_singInFragment_to_singUpFragment"
+                app:destination="@id/singUpFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/singUpFragment"
+            android:name="com.ango.circle.views.signup.signup_screen.SignUpFragment"
+            android:label="SingUpFragment"
+            tools:layout="@layout/fragment_sign_up" >
+            <action
+                android:id="@+id/action_singUpFragment_to_selectGenderFragment"
+                app:destination="@id/selectGenderFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/selectGenderFragment"
+            android:name="com.ango.circle.views.signup.select_gender_screen.SelectGenderFragment"
+            android:label="fragment_select_gender"
+            tools:layout="@layout/fragment_select_gender" >
+            <action
+                android:id="@+id/action_selectGenderFragment_to_categoryFragment2"
+                app:destination="@id/categoryFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/categoryFragment"
+            android:name="com.ango.circle.views.signup.select_category_screen.CategoryFragment"
+            android:label="fragment_category"
+            tools:layout="@layout/fragment_category" />
+    </navigation>
 </navigation>

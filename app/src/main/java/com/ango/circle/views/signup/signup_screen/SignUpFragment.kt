@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.ango.circle.R
+import com.ango.circle.core.data.model.SignUpUser
 import com.ango.circle.core.state.ErrorState
 import com.ango.circle.core.state.LoadingState
 import com.ango.circle.core.state.SuccessState
-import com.ango.circle.core.utils.showToast
+import com.ango.circle.core.utils.*
 import com.ango.circle.databinding.FragmentSignUpBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -41,6 +42,19 @@ class SignUpFragment : Fragment() {
     }
 
     private fun initviewModelObservers() {
+        initSignUpObserver()
+        initUserInputCompletionObserver()
+
+    }
+
+    private fun initUserInputCompletionObserver() {
+        signUpViewModel.signUpInputCompletion.observe(viewLifecycleOwner){
+            //todo handle error text under the specified input field based on @it type.
+            println(it)
+        }
+    }
+
+    private fun initSignUpObserver() {
         signUpViewModel.userSignUpState.observe(viewLifecycleOwner){signUpState ->
             signUpState?.let{
                 when(it) {
@@ -60,27 +74,20 @@ class SignUpFragment : Fragment() {
     }
 
 
-
     private fun initSignUpClickListener() {
         signupBinding.signupBtnId.setOnClickListener{
-            val (name,email,password) = getUserInput()
-            if(isValid(name,email,password)) {
-                Log.d(TAG, "user input valid")
-                signUpViewModel.signUpUser(name,email,password)
-            } else{
-                Log.d(TAG, "user input not valid")
+            val signupUser = getUserInput()
+            signUpViewModel.validateUserSignupInput(signupUser).let { inputValid ->
+                if(inputValid) {
+                    signUpViewModel.signUpUser(signupUser)
+                }
             }
         }
     }
 
 
 
-    private fun isValid(name:String,email:String,password:String ):Boolean{
-        val isNameValid = true
-        val isEmailValid = true
-        val isPasswordValid = true
-        return true
-    }
+
 
     private fun getUserInput(): SignUpUser {
         val userName = signupBinding.nameTextInputId.text.toString()
@@ -90,7 +97,7 @@ class SignUpFragment : Fragment() {
         return SignUpUser(userName,userEmail,userPassword)
     }
 
-    private data class SignUpUser(val name:String, val email:String, val password:String)
+
 
 }
 

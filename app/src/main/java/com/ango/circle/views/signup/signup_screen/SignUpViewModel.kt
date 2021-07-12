@@ -6,17 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ango.circle.core.data.model.Category
+import com.ango.circle.core.data.model.SignUpUser
 import com.ango.circle.core.data.model.User
 import com.ango.circle.core.data.model.enums.Gender
 import com.ango.circle.core.repos.user.IUserRepository
 import com.ango.circle.core.state.ErrorState
 import com.ango.circle.core.state.State
 import com.ango.circle.core.state.SuccessState
+import com.ango.circle.core.utils.validateEmail
+import com.ango.circle.core.utils.validatePassword
+import com.ango.circle.core.utils.validateUserName
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.*
 
 class SignUpViewModel(
     private val userRepository: IUserRepository,
@@ -31,15 +34,18 @@ class SignUpViewModel(
     private val _categoriesState = MutableLiveData<State>()
     val categoriesState = _categoriesState
 
+    private val _signUpInputCompletion = MutableLiveData<InCompleteInput>()
+    val signUpInputCompletion = _signUpInputCompletion
+
     private val signUpJobs = mutableListOf<Job>()
 
-    fun signUpUser(name:String,email:String,password:String) {
+    fun signUpUser(signupUser: SignUpUser) {
         signUpJobs += viewModelScope.launch(IO) {
-            userRepository.signupUser(email,password){
+            userRepository.signupUser(signupUser.email,signupUser.password){
                 when(it) {
                     is SuccessState<*> ->{
                         val userId = (it.data as String)
-                        user = User(userId = userId,userName= name,userEmail = email)
+                        user = User(userId = userId,userName= signupUser.name,userEmail = signupUser.email)
                     }
                     is ErrorState ->{}
                 }
@@ -86,6 +92,26 @@ class SignUpViewModel(
                 job.cancel()
             }
         }
+    }
+
+    fun validateUserSignupInput(signupUser: SignUpUser):Boolean {
+        val isUserNameValid = validateUserName(signupUser.name)
+        val isEmailValid =    validateEmail(signupUser.email)
+        val isPasswordValid = validatePassword(signupUser.password)
+
+        if(!isUserNameValid) {
+            _signUpInputCompletion.value = InCompleteInput.NameComplete()
+            return false
+        }
+        if(!isEmailValid) {
+            _signUpInputCompletion.value = InCompleteInput.EmailComplete()
+            return false
+        }
+        if(!isPasswordValid) {
+            _signUpInputCompletion.value = InCompleteInput.PasswordComplete()
+            return false
+        }
+        return true
     }
 
 }
