@@ -46,8 +46,11 @@ class SignUpViewModel(
                     is SuccessState<*> ->{
                         val userId = (it.data as String)
                         user = User(userId = userId,userName= signupUser.name,userEmail = signupUser.email)
+                        //todo: move to select gender and profile image fragment.
                     }
-                    is ErrorState ->{}
+                    is ErrorState ->{
+                        //todo: display a proper error message to describe to the user what goes wrong.
+                    }
                 }
                 Log.d("viewModel","emit value $it")
             }
