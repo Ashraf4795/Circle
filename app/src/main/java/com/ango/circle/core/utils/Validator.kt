@@ -1,18 +1,21 @@
 package com.ango.circle.core.utils
 
-class Validator {
+import android.util.Patterns
 
-    companion object {
-        fun validateEmail(email: String): Boolean {
-            return true
-        }
 
-        fun validatePassword(password: String): Boolean {
-            return true
-        }
-
-        fun validateUserName(userName: String): Boolean {
-            return true
-        }
-    }
+fun validateEmail(email: String): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
+fun validatePassword(password: String): Boolean {
+    //todo: make validation more complex
+    //source: https://java2blog.com/validate-password-java/
+    return password.length > 7
+}
+
+fun validateUserName(userName: String): Boolean {
+    //check if name is not empty and has not white spaces.
+    return userName.isNotBlank()
+}
+
+
+

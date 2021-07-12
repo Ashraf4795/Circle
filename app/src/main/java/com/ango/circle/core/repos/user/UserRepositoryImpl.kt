@@ -18,8 +18,8 @@ class UserRepositoryImpl (private val userInteractorImpl: IUserInteractor) : IUs
         userInteractorImpl.signOutUser()
     }
 
-    override suspend fun insertUser(user: User) {
-        TODO("Not yet implemented")
+    override suspend fun insertUser(user: User, onCompleteListener: (State) -> Unit) {
+        userInteractorImpl.insertUser(user,onCompleteListener)
     }
 
     override suspend fun getCategories(onCompleteListener: (State) -> Unit) {

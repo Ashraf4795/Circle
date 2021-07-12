@@ -19,13 +19,14 @@ import com.ango.circle.databinding.FragmentCategoryBinding
 import com.ango.circle.views.signup.signup_screen.SignUpViewModel
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.Job
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 private const val TAG = "CategoryFragment"
 
 class CategoryFragment : Fragment() {
 
     private lateinit var categoryFragmentBinding:FragmentCategoryBinding
-    private val signUpViewModel:SignUpViewModel by viewModel()
+    private val signUpViewModel by sharedViewModel<SignUpViewModel>()
     private val categoryAdapter:CategoryAdapter = CategoryAdapter(mutableListOf())
     private val categoryFragmentJobs = mutableListOf<Job>()
 
