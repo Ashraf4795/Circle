@@ -45,7 +45,8 @@
             android:id="@+id/singInFragment"
             android:name="com.ango.circle.views.signin.SingInFragment"
             android:label="fragment_sing_in"
-            tools:layout="@layout/fragment_sign_in" >
+            tools:layout="@layout/fragment_sign_in"
+            app:startDestination="@id/action_singInFragment_to_singUpFragment">
             <action
                 android:id="@+id/action_singInFragment_to_singUpFragment"
                 app:destination="@id/singUpFragment" />
