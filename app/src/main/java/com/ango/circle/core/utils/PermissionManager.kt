@@ -17,9 +17,8 @@ class PermissionManager{
             return ContextCompat.checkSelfPermission(context, permission) == PERMISSION_DENIED
         }
 
-        @RequiresApi(Build.VERSION_CODES.M)
-        fun shouldShowPermissionRational(activity: Activity, permission: String) {
-            activity.shouldShowRequestPermissionRationale(permission)
+        fun shouldShowPermissionRational(activity: Activity, permission: String): Boolean {
+            return activity.shouldShowRequestPermissionRationale(permission)
         }
     }
 
