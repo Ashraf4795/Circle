@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.ImageCapture
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -19,6 +19,8 @@ import com.ango.circle.databinding.FragmentSelectGenderBinding
 import com.ango.circle.views.showDialog
 import com.ango.circle.views.signup.signup_screen.SignUpViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class SelectGenderFragment : Fragment() {
     private val signupViewModel by sharedViewModel<SignUpViewModel>()
@@ -36,11 +38,6 @@ class SelectGenderFragment : Fragment() {
             println("activity permission grant result is: $isGranted")
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,8 +51,9 @@ class SelectGenderFragment : Fragment() {
         updateGenderButtons()
         setGenderButtonsListener()
         setSelectUserProfileImageListener()
-        //Log.d("User","user is ${signupViewModel.user}")
+
     }
+
 
     private fun setSelectUserProfileImageListener() {
         selectGenderBinding.userImgId.setOnClickListener {
@@ -134,7 +132,7 @@ class SelectGenderFragment : Fragment() {
                         requestPermissionLauncher.launch(cameraPermission)
                     },
                     onNegativeCallBack = {
-
+                        showToast(this.requireActivity(),resources.getString(R.string.degrade_feature_message))
                     })
                 //show UI to clarify the need for the request permission.
             }
@@ -143,6 +141,7 @@ class SelectGenderFragment : Fragment() {
 
     private fun performChooseImage() {
         println("performChooseImage")
+        findNavController().navigate(R.id.action_selectGenderFragment_to_imageCaptureFragment)
     }
 
 }

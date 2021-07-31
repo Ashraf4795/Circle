@@ -68,11 +68,19 @@
             <action
                 android:id="@+id/action_selectGenderFragment_to_categoryFragment2"
                 app:destination="@id/categoryFragment" />
+            <action
+                android:id="@+id/action_selectGenderFragment_to_imageCaptureFragment"
+                app:destination="@id/imageCaptureFragment" />
         </fragment>
         <fragment
             android:id="@+id/categoryFragment"
             android:name="com.ango.circle.views.signup.select_category_screen.CategoryFragment"
             android:label="fragment_category"
             tools:layout="@layout/fragment_category" />
+        <fragment
+            android:id="@+id/imageCaptureFragment"
+            android:name="com.ango.circle.views.signup.select_gender_screen.ImageCaptureFragment"
+            android:label="fragment_image_capture"
+            tools:layout="@layout/fragment_image_capture" />
     </navigation>
 </navigation>

@@ -93,8 +93,10 @@
     <string name="done">Done</string>
 
     <string name="permission_explain_dialog_positive">OK</string>
-    <string name="permission_explain_dialog_negative">Done</string>
+    <string name="permission_explain_dialog_negative">Cancel</string>
     <string name="permission_explain_message">The app needs this permission to continue.</string>
+    <string name="degrade_feature_message">This feature will be disabled till you allow permissions.</string>
+    <string name="Take">Take</string>
 
 
 </resources>
