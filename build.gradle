@@ -15,6 +15,7 @@ buildscript {
         koin_version = '2.2.3'
         play_services_maps = '17.0.1'
         lifecycle_version = '2.3.1'
+        camerax_version = "1.0.1"
     }
     repositories {
         google()
