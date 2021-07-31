@@ -14,7 +14,7 @@ fun validatePassword(password: String): Boolean {
 
 fun validateUserName(userName: String): Boolean {
     //check if name is not empty and has not white spaces.
-    return userName.isNotBlank()
+    return (userName.isNotBlank() && userName.length > 3)
 }
 
 

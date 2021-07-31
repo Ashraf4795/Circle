@@ -12,6 +12,7 @@
     app:cardCornerRadius="@dimen/default_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categoryLayout_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

@@ -4,7 +4,7 @@ import com.ango.circle.core.data.model.enums.Gender
 
 data class User(
     val userId:String,
-    var userName:String,
+    val userName:String,
     val userEmail:String,
     var userImgUrl:String ?= null,
     var userGender: Gender ?= null,

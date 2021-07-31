@@ -1,12 +1,11 @@
 package com.ango.circle.views.signup.select_category_screen
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ango.circle.R
@@ -19,8 +18,9 @@ import com.ango.circle.databinding.FragmentCategoryBinding
 import com.ango.circle.views.signup.signup_screen.SignUpViewModel
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+
 private const val TAG = "CategoryFragment"
 
 class CategoryFragment : Fragment() {
@@ -45,15 +45,25 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initCategoryRecyclerView()
+        initCategoryFragmentClickListeners()
         initCategoryStateObservation()
         getCategories()
 
     }
 
+    private fun initCategoryFragmentClickListeners() {
+        categoryFragmentBinding.doneBtnId.setOnClickListener {
+            finishSigningUp()
+        }
+    }
+
+    private fun finishSigningUp() {
+        signUpViewModel.doneSingingUp(categoryAdapter.getCategoryItems().filter { it.is_selected == true })
+    }
+
     private fun initCategoryRecyclerView() {
         with(categoryFragmentBinding.categoryRvId) {
             layoutManager = GridLayoutManager(requireActivity(),2)
-
             adapter = categoryAdapter
         }
     }

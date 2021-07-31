@@ -5,8 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ango.circle.R
 import com.ango.circle.core.data.model.SignUpUser
 import com.ango.circle.core.state.ErrorState
@@ -44,13 +47,29 @@ class SignUpFragment : Fragment() {
     private fun initviewModelObservers() {
         initSignUpObserver()
         initUserInputCompletionObserver()
+        initNavigatorObserver()
+    }
 
+    private fun initNavigatorObserver() {
+        signUpViewModel.signUpNavigationState.observe(viewLifecycleOwner) {
+            this.findNavController().navigate(it)
+        }
     }
 
     private fun initUserInputCompletionObserver() {
         signUpViewModel.signUpInputCompletion.observe(viewLifecycleOwner){
-            //todo handle error text under the specified input field based on @it type.
-            println(it)
+            when(it) {
+                is InCompleteInput.NameComplete -> {
+                    showInValideUserName(getString(R.string.enter_valid_user_name))
+                }
+                is InCompleteInput.EmailComplete -> {
+                    showInValideEmail(getString(R.string.enter_valid_email))
+
+                }
+                is InCompleteInput.PasswordComplete -> {
+                    showInValidePassword(getString(R.string.enter_valid_password))
+                }
+            }
         }
     }
 
@@ -66,7 +85,7 @@ class SignUpFragment : Fragment() {
                         showToast(requireActivity(),"Loading", Toast.LENGTH_LONG)
                     }
                     is ErrorState -> {
-                        Log.d(TAG, it.message ?:"error message null")
+                        showToast(requireActivity(),"${it.message}", Toast.LENGTH_LONG)
                     }
                 }
             }?: showToast(requireActivity(),"null",Toast.LENGTH_LONG)
@@ -97,6 +116,17 @@ class SignUpFragment : Fragment() {
         return SignUpUser(userName,userEmail,userPassword)
     }
 
+    private fun showInValideUserName(message:String) {
+        signupBinding.nameTextInputId.error = message
+    }
+
+    private fun showInValideEmail(message:String) {
+        signupBinding.emailTextInputId.error = message
+    }
+
+    private fun showInValidePassword(message:String) {
+        signupBinding.passwordTextInputId.error = message
+    }
 
 
 }
