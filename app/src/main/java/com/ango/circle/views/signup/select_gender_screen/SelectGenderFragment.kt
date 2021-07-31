@@ -1,32 +1,41 @@
 package com.ango.circle.views.signup.select_gender_screen
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ango.circle.R
 import com.ango.circle.core.data.model.enums.Gender
+import com.ango.circle.core.state.PermissionState
+import com.ango.circle.core.utils.PermissionManager
 import com.ango.circle.core.utils.showToast
 import com.ango.circle.databinding.FragmentSelectGenderBinding
+import com.ango.circle.views.showDialog
 import com.ango.circle.views.signup.signup_screen.SignUpViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import kotlin.math.sign
 
 class SelectGenderFragment : Fragment() {
     private val signupViewModel by sharedViewModel<SignUpViewModel>()
     private var isMaleClicked = false
     private var isFemaleClicked = false
     private lateinit var selectGenderBinding: FragmentSelectGenderBinding
+    private val cameraPermission = android.Manifest.permission.CAMERA
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+            } else {
+                //Explain to the user that the feature is unavailable
+            }
+            println("activity permission grant result is: $isGranted")
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,8 +58,8 @@ class SelectGenderFragment : Fragment() {
     }
 
     private fun setSelectUserProfileImageListener() {
-        selectGenderBinding.userImgId.setOnClickListener{
-            showToast(requireContext(),"user profile image")
+        selectGenderBinding.userImgId.setOnClickListener {
+            chooseImage()
         }
     }
 
@@ -64,7 +73,7 @@ class SelectGenderFragment : Fragment() {
             signupViewModel.user.userGender = Gender.FEMALE
             updateGenderButtons()
         }
-        selectGenderBinding.nextBtnId.setOnClickListener{
+        selectGenderBinding.nextBtnId.setOnClickListener {
             findNavController().navigate(R.id.action_selectGenderFragment_to_categoryFragment2)
         }
     }
@@ -100,6 +109,40 @@ class SelectGenderFragment : Fragment() {
         layoutBg: Int,
     ) {
         layout.setBackground(ContextCompat.getDrawable(requireContext(), layoutBg))
+    }
+
+    private fun askForPermission(): PermissionState {
+        val permissionState =
+            PermissionManager.requestPermission(this.requireActivity(), cameraPermission)
+        println("permission: $permissionState")
+        return permissionState
+    }
+
+    private fun chooseImage() {
+        when (askForPermission()) {
+            PermissionState.GRANTED -> {
+                performChooseImage()
+            }
+            PermissionState.DENIED -> {
+                requestPermissionLauncher.launch(cameraPermission)
+                //request the permission
+            }
+            PermissionState.EXPLAIN -> {
+                println("explain")
+                showDialog(this.requireActivity(),
+                    onPositiveCallBack = {
+                        requestPermissionLauncher.launch(cameraPermission)
+                    },
+                    onNegativeCallBack = {
+
+                    })
+                //show UI to clarify the need for the request permission.
+            }
+        }
+    }
+
+    private fun performChooseImage() {
+        println("performChooseImage")
     }
 
 }

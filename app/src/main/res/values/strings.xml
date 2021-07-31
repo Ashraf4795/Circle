@@ -91,4 +91,10 @@
     <string name="bronz_txt">Bronze</string>
     <string name="silver_txt">Silver</string>
     <string name="done">Done</string>
+
+    <string name="permission_explain_dialog_positive">OK</string>
+    <string name="permission_explain_dialog_negative">Done</string>
+    <string name="permission_explain_message">The app needs this permission to continue.</string>
+
+
 </resources>
