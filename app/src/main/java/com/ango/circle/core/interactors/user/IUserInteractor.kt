@@ -1,5 +1,6 @@
 package com.ango.circle.core.interactors.user
 
+import com.ango.circle.core.data.model.Category
 import com.ango.circle.core.data.model.User
 import com.ango.circle.core.state.State
 

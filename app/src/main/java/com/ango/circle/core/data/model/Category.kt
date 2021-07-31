@@ -15,5 +15,9 @@ data class Category(
 
     @set:PropertyName("category_img")
     @get:PropertyName("category_img")
-    var categoryImg:String?=null
+    var categoryImg:String?=null,
+
+    @set:PropertyName("is_selected")
+    @get:PropertyName("is_selected")
+    var is_selected:Boolean?=null
 )

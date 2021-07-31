@@ -90,4 +90,5 @@
     <string name="gold_txt">Gold</string>
     <string name="bronz_txt">Bronze</string>
     <string name="silver_txt">Silver</string>
+    <string name="done">Done</string>
 </resources>

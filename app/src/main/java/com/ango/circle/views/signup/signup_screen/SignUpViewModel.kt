@@ -25,12 +25,12 @@ import kotlinx.coroutines.launch
 class SignUpViewModel(
     private val userRepository: IUserRepository,
     private val IO: CoroutineDispatcher = Dispatchers.IO
-) : ViewModel(){
+) : ViewModel() {
     private val TAG = "SignUpViewModel"
     lateinit var user: User
 
     private val _userSignUpState = MutableLiveData<State>()
-    val userSignUpState:LiveData<State> = _userSignUpState
+    val userSignUpState: LiveData<State> = _userSignUpState
 
     private val _categoriesState = MutableLiveData<State>()
     val categoriesState = _categoriesState
@@ -46,50 +46,53 @@ class SignUpViewModel(
 
     fun signUpUser(signupUser: SignUpUser) {
         signUpJobs += viewModelScope.launch(IO) {
-            userRepository.signupUser(signupUser.email,signupUser.password){ signUpState->
-                when(signUpState) {
-                    is SuccessState<*> ->{
+            userRepository.signupUser(signupUser.email, signupUser.password) { signUpState ->
+                when (signUpState) {
+                    is SuccessState<*> -> {
                         val userId = (signUpState.data as String)
-                        user = User(userId = userId,userName= signupUser.name,userEmail = signupUser.email)
+                        user = User(
+                            userId = userId,
+                            userName = signupUser.name,
+                            userEmail = signupUser.email
+                        )
                         _userSignUpState.postValue(SuccessState(user))
                         _signUpNavigationState.postValue(R.id.action_singUpFragment_to_selectGenderFragment)
                     }
-                    is ErrorState ->{
+                    is ErrorState -> {
                         //todo: display a proper error message to describe to the user what goes wrong.
-                        Log.d("User","emit value $signUpState")
+                        Log.d("User", "emit value $signUpState")
                         _userSignUpState.postValue(ErrorState(message = signUpState.message))
                     }
                     else -> {
-                        Log.d("User","emit value $signUpState")
+                        Log.d("User", "emit value $signUpState")
                     }
                 }
-                Log.d("viewModel","emit value $signUpState")
+                Log.d("viewModel", "emit value $signUpState")
             }
         }
     }
 
     fun getCategories() {
         signUpJobs += viewModelScope.launch(IO) {
-            userRepository.getCategories{
+            userRepository.getCategories {
                 _categoriesState.postValue(it)
-                Log.d("viewModel","emit value $it")
+                Log.d("viewModel", "emit value $it")
             }
         }
     }
 
-    fun setUserInterests(listOfCategories:List<Category>) {
+    fun setUserInterests(listOfCategories: List<Category>) {
         user.userInterests = listOfCategories
     }
+
     fun setUserGender(gender: Gender) {
         user.userGender = gender
     }
 
-    suspend fun insertUser() {
-        signUpJobs += viewModelScope.launch(IO) {
-            userRepository.insertUser(user) {
-                _userSignUpState.value = it
-                Log.d(TAG,"Signup state: $it")
-            }
+    suspend fun insertUser(user:User) {
+        userRepository.insertUser(user) {
+            _userSignUpState.value = it
+            Log.d(TAG, "Signup state: $it")
         }
     }
 
@@ -101,31 +104,38 @@ class SignUpViewModel(
     }
 
     private fun clearJobs() {
-        for(job in signUpJobs) {
-            if(!job.isCancelled) {
+        for (job in signUpJobs) {
+            if (!job.isCancelled) {
                 job.cancel()
             }
         }
     }
 
-    fun validateUserSignupInput(signupUser: SignUpUser):Boolean {
+    fun validateUserSignupInput(signupUser: SignUpUser): Boolean {
         val isUserNameValid = validateUserName(signupUser.name)
-        val isEmailValid    = validateEmail(signupUser.email)
+        val isEmailValid = validateEmail(signupUser.email)
         val isPasswordValid = validatePassword(signupUser.password)
 
-        if(!isUserNameValid) {
+        if (!isUserNameValid) {
             _signUpInputCompletion.value = InCompleteInput.NameComplete()
             return false
         }
-        if(!isEmailValid) {
+        if (!isEmailValid) {
             _signUpInputCompletion.value = InCompleteInput.EmailComplete()
             return false
         }
-        if(!isPasswordValid) {
+        if (!isPasswordValid) {
             _signUpInputCompletion.value = InCompleteInput.PasswordComplete()
             return false
         }
         return true
+    }
+
+    fun doneSingingUp(userCategories: List<Category>) {
+        user.userInterests = userCategories
+        signUpJobs += viewModelScope.launch(IO) {
+            insertUser(user)
+        }
     }
 
 }

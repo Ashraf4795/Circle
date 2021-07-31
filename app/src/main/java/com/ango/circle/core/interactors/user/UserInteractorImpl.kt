@@ -65,6 +65,9 @@ class UserInteractorImpl(
             .addOnFailureListener {
                 onCompleteListener(ErrorState(message = it.message))
             }
+            .addOnCanceledListener{
+                onCompleteListener(ErrorState())
+            }
     }
 
     override suspend fun getCategories(onCompleteListener: (State) -> Unit) {
