@@ -5,3 +5,5 @@ const val categoryCollection = "categories"
 const val userCollection = "users"
 
 const val circlesCollection = "circles"
+
+const val userPicturesBucket="userProfilePictures"

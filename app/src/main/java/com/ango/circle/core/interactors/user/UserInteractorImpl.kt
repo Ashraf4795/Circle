@@ -1,5 +1,6 @@
 package com.ango.circle.core.interactors.user
 
+import android.graphics.Bitmap
 import com.ango.circle.core.categoryCollection
 import com.ango.circle.core.data.model.Category
 import com.ango.circle.core.data.model.User
@@ -7,13 +8,19 @@ import com.ango.circle.core.state.ErrorState
 import com.ango.circle.core.state.State
 import com.ango.circle.core.state.SuccessState
 import com.ango.circle.core.userCollection
+import com.ango.circle.core.userPicturesBucket
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FileDownloadTask
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.*
+import java.io.ByteArrayOutputStream
 
 class UserInteractorImpl(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
+    private val firebaseStorage:FirebaseStorage,
     private val IO: CoroutineDispatcher = Dispatchers.IO
 ) : IUserInteractor {
 
@@ -93,5 +100,38 @@ class UserInteractorImpl(
                 )
             }
     }
+
+    override suspend fun uploadUserPicture(
+        imageName: String,
+        bitmap: Bitmap,
+        onCompleteListener: (State) -> Unit,
+        onProgress: (Int) -> Unit
+    ): UploadTask {
+        val byteArrayOutPutStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutPutStream)
+        val pictureData = byteArrayOutPutStream.toByteArray()
+        val pictureRef = firebaseStorage.reference.child("$userPicturesBucket/$imageName")
+        val uploadTask = pictureRef.putBytes(pictureData)
+        uploadTask.addOnCompleteListener {
+            onCompleteListener.invoke(SuccessState(data = it.result))
+        }.addOnProgressListener{
+            val progress = (100.0 * it.bytesTransferred) / it.totalByteCount
+            onProgress.invoke(progress.toInt())
+        }
+        return uploadTask
+    }
+
+    override suspend fun downloadUserPicture(
+        path: String,
+        onCompleteListener: (State) -> Unit,
+        onProgress: (Int) -> Unit
+    ) {
+        firebaseStorage.reference.child(path).downloadUrl.addOnSuccessListener {
+            onCompleteListener.invoke(SuccessState(data = it))
+        }.addOnFailureListener{
+            onCompleteListener(ErrorState(message = it.message))
+        }
+    }
+
 
 }

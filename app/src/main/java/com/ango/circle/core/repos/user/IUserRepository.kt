@@ -1,7 +1,10 @@
 package com.ango.circle.core.repos.user
 
+import android.graphics.Bitmap
 import com.ango.circle.core.data.model.User
 import com.ango.circle.core.state.State
+import com.google.firebase.storage.FileDownloadTask
+import com.google.firebase.storage.UploadTask
 
 interface IUserRepository {
 
@@ -11,4 +14,7 @@ interface IUserRepository {
 
     suspend fun insertUser(user: User,onCompleteListener:(State)->Unit)
     suspend fun getCategories(onCompleteListener:(State)->Unit)
+
+    suspend fun uploadUserPicture(imageName:String,bitmap: Bitmap,onCompleteListener: (State) -> Unit,onProgress:(Int)->Unit):UploadTask
+    suspend fun downloadUserPicture(path:String, onCompleteListener:(State)->Unit,onProgress: (Int) -> Unit)
 }

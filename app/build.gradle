@@ -126,6 +126,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     //firebase firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    //firebase storage
+    implementation 'com.google.firebase:firebase-storage'
 
     //logger
     implementation 'com.orhanobut:logger:2.2.0'

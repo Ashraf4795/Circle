@@ -1,5 +1,8 @@
 package com.ango.circle.views.signup.select_gender_screen
 
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +17,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.ango.circle.R
+import com.ango.circle.core.utils.toBitmap
 import com.ango.circle.databinding.ActivityMainBinding
 import com.ango.circle.databinding.FragmentImageCaptureBinding
 import java.util.concurrent.ExecutorService
@@ -90,9 +94,14 @@ class ImageCaptureFragment : Fragment() {
         }, ContextCompat.getMainExecutor(this.requireActivity()))
 
         imageCapture?.takePicture(cameraExecutor,object: ImageCapture.OnImageCapturedCallback() {
-            override fun onCaptureSuccess(image: ImageProxy) {
-                super.onCaptureSuccess(image)
-                println(image)
+            @SuppressLint("UnsafeOptInUsageError")
+            override fun onCaptureSuccess(imageProxy: ImageProxy) {
+
+                println(imageProxy)
+                val rotationDegree = imageProxy.imageInfo.rotationDegrees
+                val bitmap: Bitmap? = imageProxy.image?.toBitmap(rotationDegree)
+
+                super.onCaptureSuccess(imageProxy)
             }
         })
     }
