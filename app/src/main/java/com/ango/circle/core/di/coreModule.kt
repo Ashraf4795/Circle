@@ -12,6 +12,7 @@ import org.koin.dsl.module
 val coreModule = module{
     single { provideFirebaseAuthInstnace() }
     single { provideFirebaseFirestoreInstance()}
+    single { provideFirebaseStorageInstance()}
 }
 
 private fun provideFirebaseAuthInstnace(): FirebaseAuth {

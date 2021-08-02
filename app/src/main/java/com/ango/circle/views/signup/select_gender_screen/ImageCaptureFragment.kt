@@ -54,7 +54,9 @@ class ImageCaptureFragment : Fragment() {
     }
 
     private fun initTakePictureButtonClickListener() {
-        takePicture()
+        imageCaptureBinding.takePicBtnId.setOnClickListener {
+            takePicture()
+        }
     }
 
     private fun takePicture(){
