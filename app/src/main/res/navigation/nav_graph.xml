@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/splashsFragment">
+    app:startDestination="@id/exploreFragment">
 
     <fragment
         android:id="@+id/splashsFragment"
@@ -25,4 +25,9 @@
         android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
         android:label="fragment_circle_details"
         tools:layout="@layout/fragment_circle_details" />
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.ango.circle.views.home.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
 </navigation>
