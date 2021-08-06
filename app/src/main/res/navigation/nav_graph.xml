@@ -5,6 +5,13 @@
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/exploreFragment">
 
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.ango.circle.views.home.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+
     <fragment
         android:id="@+id/splashsFragment"
         android:name="com.ango.circle.views.splash.SplashsFragment"
@@ -39,14 +46,15 @@
         android:id="@+id/profileFragment"
         android:name="com.ango.circle.views.profile.ProfileFragment"
         android:label="ProfileFragment" />
-    <navigation android:id="@+id/login_flow"
+    <navigation
+        android:id="@+id/login_flow"
         app:startDestination="@id/singUpFragment">
         <fragment
             android:id="@+id/singInFragment"
             android:name="com.ango.circle.views.signin.SingInFragment"
             android:label="fragment_sing_in"
-            tools:layout="@layout/fragment_sign_in"
-            app:startDestination="@id/action_singInFragment_to_singUpFragment">
+            app:startDestination="@id/action_singInFragment_to_singUpFragment"
+            tools:layout="@layout/fragment_sign_in">
             <action
                 android:id="@+id/action_singInFragment_to_singUpFragment"
                 app:destination="@id/singUpFragment" />
@@ -55,7 +63,7 @@
             android:id="@+id/singUpFragment"
             android:name="com.ango.circle.views.signup.signup_screen.SignUpFragment"
             android:label="SingUpFragment"
-            tools:layout="@layout/fragment_sign_up" >
+            tools:layout="@layout/fragment_sign_up">
             <action
                 android:id="@+id/action_singUpFragment_to_selectGenderFragment"
                 app:destination="@id/selectGenderFragment" />
@@ -64,7 +72,7 @@
             android:id="@+id/selectGenderFragment"
             android:name="com.ango.circle.views.signup.select_gender_screen.SelectGenderFragment"
             android:label="fragment_select_gender"
-            tools:layout="@layout/fragment_select_gender" >
+            tools:layout="@layout/fragment_select_gender">
             <action
                 android:id="@+id/action_selectGenderFragment_to_categoryFragment2"
                 app:destination="@id/categoryFragment" />
@@ -83,23 +91,5 @@
             android:label="fragment_image_capture"
             tools:layout="@layout/fragment_image_capture" />
     </navigation>
-        android:id="@+id/singInFragment"
-        android:name="com.ango.circle.views.signin.SingInFragment"
-        android:label="fragment_sing_in"
-        tools:layout="@layout/fragment_sing_in" />
-    <fragment
-        android:id="@+id/singUpFragment2"
-        android:name="com.ango.circle.views.signup.SingUpFragment"
-        android:label="SingUpFragment"
-        tools:layout="@layout/fragment_sing_up" />
-    <fragment
-        android:id="@+id/circleDetailsFragment"
-        android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
-        android:label="fragment_circle_details"
-        tools:layout="@layout/fragment_circle_details" />
-    <fragment
-        android:id="@+id/exploreFragment"
-        android:name="com.ango.circle.views.home.explore.ExploreFragment"
-        android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+
 </navigation>

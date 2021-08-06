@@ -1,5 +1,6 @@
 package com.ango.circle.core.di
 
+import com.ango.circle.core.interactors.FirebaseInteractor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -13,6 +14,7 @@ val coreModule = module{
     single { provideFirebaseAuthInstnace() }
     single { provideFirebaseFirestoreInstance()}
     single { provideFirebaseStorageInstance()}
+    single {FirebaseInteractor(get(),get(),get())}
 }
 
 private fun provideFirebaseAuthInstnace(): FirebaseAuth {
@@ -23,4 +25,4 @@ private fun provideFirebaseFirestoreInstance():FirebaseFirestore{
     return Firebase.firestore
 }
 
-private fun provideFirebaseStorageInstance() : FirebaseStorage = FirebaseStorage.getInstance();
+private fun provideFirebaseStorageInstance() : FirebaseStorage = FirebaseStorage.getInstance()
