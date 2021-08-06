@@ -60,7 +60,8 @@
     <string name="company_name">Company Name</string>
     <string name="responsible_person_name">Responsible person name</string>
     <string name="phone">Phone</string>
-    <string name="successful_signup_msg">Thank you for signing up with us, we will contact your soon.</string>
+    <string name="successful_signup_msg">Thank you for signing up with us, we will contact you soon.</string>
+    <string name="email_is_used">This email is used by another user.</string>
     <string name="setting_your_profile">Setting your profile</string>
     <string name="upload_profile_pic">Upload profile Photo</string>
     <string name="choose_your_gender">Choose your gender</string>
@@ -79,6 +80,23 @@
     <string name="category_content_Description">Category item</string>
     <string name="circle_picture">Circle Picture</string>
 
+    <!--singup validation error messages-->
+    <string name="enter_valid_user_name">Please Enter Valid User Name</string>
+    <string name="enter_valid_password">Please Enter Valid Password</string>
+    <string name="enter_valid_email">Please Enter Valid Email</string>
+
     <!--todo delete-->
     <string name="placeholder_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="gold_txt">Gold</string>
+    <string name="bronz_txt">Bronze</string>
+    <string name="silver_txt">Silver</string>
+    <string name="done">Done</string>
+
+    <string name="permission_explain_dialog_positive">OK</string>
+    <string name="permission_explain_dialog_negative">Cancel</string>
+    <string name="permission_explain_message">The app needs this permission to continue.</string>
+    <string name="degrade_feature_message">This feature will be disabled till you allow permissions.</string>
+    <string name="Take">Take</string>
+
+
 </resources>

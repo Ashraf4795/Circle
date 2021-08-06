@@ -11,6 +11,78 @@
         android:label="fragment_splashs"
         tools:layout="@layout/fragment_splash" />
     <fragment
+        android:id="@+id/circleDetailsFragment"
+        android:name="com.ango.circle.views.circle_details.CircleDetailsFragment"
+        android:label="fragment_circle_details"
+        tools:layout="@layout/fragment_circle_details" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.ango.circle.views.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.ango.circle.views.home.notifications.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.ango.circle.views.home.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ango.circle.views.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ango.circle.views.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <navigation android:id="@+id/login_flow"
+        app:startDestination="@id/singUpFragment">
+        <fragment
+            android:id="@+id/singInFragment"
+            android:name="com.ango.circle.views.signin.SingInFragment"
+            android:label="fragment_sing_in"
+            tools:layout="@layout/fragment_sign_in"
+            app:startDestination="@id/action_singInFragment_to_singUpFragment">
+            <action
+                android:id="@+id/action_singInFragment_to_singUpFragment"
+                app:destination="@id/singUpFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/singUpFragment"
+            android:name="com.ango.circle.views.signup.signup_screen.SignUpFragment"
+            android:label="SingUpFragment"
+            tools:layout="@layout/fragment_sign_up" >
+            <action
+                android:id="@+id/action_singUpFragment_to_selectGenderFragment"
+                app:destination="@id/selectGenderFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/selectGenderFragment"
+            android:name="com.ango.circle.views.signup.select_gender_screen.SelectGenderFragment"
+            android:label="fragment_select_gender"
+            tools:layout="@layout/fragment_select_gender" >
+            <action
+                android:id="@+id/action_selectGenderFragment_to_categoryFragment2"
+                app:destination="@id/categoryFragment" />
+            <action
+                android:id="@+id/action_selectGenderFragment_to_imageCaptureFragment"
+                app:destination="@id/imageCaptureFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/categoryFragment"
+            android:name="com.ango.circle.views.signup.select_category_screen.CategoryFragment"
+            android:label="fragment_category"
+            tools:layout="@layout/fragment_category" />
+        <fragment
+            android:id="@+id/imageCaptureFragment"
+            android:name="com.ango.circle.views.signup.select_gender_screen.ImageCaptureFragment"
+            android:label="fragment_image_capture"
+            tools:layout="@layout/fragment_image_capture" />
+    </navigation>
         android:id="@+id/singInFragment"
         android:name="com.ango.circle.views.signin.SingInFragment"
         android:label="fragment_sing_in"
