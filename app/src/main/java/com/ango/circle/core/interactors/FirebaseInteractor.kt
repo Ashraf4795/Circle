@@ -6,6 +6,7 @@ import com.ango.circle.core.circlesCollection
 import com.ango.circle.core.data.model.Category
 import com.ango.circle.core.data.model.Circle
 import com.ango.circle.core.data.model.User
+import com.ango.circle.core.data.model.enums.Gender
 import com.ango.circle.core.interactors.category.ICategoryInteractor
 import com.ango.circle.core.interactors.home.IHomeInteractor
 import com.ango.circle.core.interactors.user.IUserInteractor
@@ -24,6 +25,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 class FirebaseInteractor(
     private val firebaseAuth: FirebaseAuth,
@@ -167,7 +169,24 @@ class FirebaseInteractor(
         onComplete: (State) -> Unit,
         onFailure: (State) -> Unit
     ) {
+        firebaseFirestore.collection(circlesCollection)
+            .whereEqualTo("circle_category",categoryTag)
+            .get()
+            .addOnSuccessListener {querySnapshot->
+                val listOfCircles = mutableListOf<Circle>()
+                querySnapshot.documents.forEach {documentSnapshot->
+                    documentSnapshot.toObject(Circle::class.java)?.let {circle->
+                        listOfCircles.add(circle)
+                    }
 
+                }
+                onComplete(SuccessState<List<Circle>?>(data = listOfCircles))
+
+
+            }
+            .addOnFailureListener {
+                onFailure(ErrorState(message = it.message))
+            }
     }
 
     override suspend fun getCircleById(
@@ -175,7 +194,24 @@ class FirebaseInteractor(
         onComplete: (State) -> Unit,
         onFailure: (State) -> Unit
     ) {
-        TODO("Not yet implemented")
+        firebaseFirestore.collection(circlesCollection)
+            .get()
+            .addOnSuccessListener {querySnapshot->
+                val listOfCircles = mutableListOf<Circle>()
+                querySnapshot.documents.forEach {documentSnapshot->
+                    documentSnapshot.toObject(Circle::class.java)?.let {circle->
+                        if(circle.circleId == circleId)
+                             listOfCircles.add(circle)
+                    }
+
+                }
+                onComplete(SuccessState<List<Circle>?>(data = listOfCircles))
+
+
+            }
+            .addOnFailureListener {
+                onFailure(ErrorState(message = it.message))
+            }
     }
 
     override suspend fun getCirclesByFilterOptions(
@@ -183,7 +219,23 @@ class FirebaseInteractor(
         onComplete: (State) -> Unit,
         onFailure: (State) -> Unit
     ) {
-        TODO("Not yet implemented")
+        firebaseFirestore.collection(circlesCollection)
+            .get()
+            .addOnSuccessListener {querySnapshot->
+                val listOfCircles = mutableListOf<Circle>()
+                querySnapshot.documents.forEach {documentSnapshot->
+                    documentSnapshot.toObject(Circle::class.java)?.let { circle ->
+                        listOfCircles.add(circle)
+                    }
+
+                }
+                onComplete(SuccessState<List<Circle>?>(data = listOfCircles))
+
+
+            }
+            .addOnFailureListener {
+                onFailure(ErrorState(message = it.message))
+            }
     }
 
     override suspend fun getUserMessages(onComplete: (State) -> Unit, onFailure: (State) -> Unit) {

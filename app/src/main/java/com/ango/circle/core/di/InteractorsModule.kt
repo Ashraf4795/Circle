@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 
 val interactorModule = module{
-    single<IUserInteractor>{UserInteractorImpl(get(),get(),get())}
+    single<IUserInteractor>{UserInteractorImpl(get())}
 }
