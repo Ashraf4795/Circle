@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/login_flow">
+    app:startDestination="@id/exploreFragment">
 
     <fragment
         android:id="@+id/splashsFragment"
@@ -83,4 +83,8 @@
             android:label="fragment_image_capture"
             tools:layout="@layout/fragment_image_capture" />
     </navigation>
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.ango.circle.views.home.explore.ExploreFragment"
+        android:label="ExploreFragment" />
 </navigation>
