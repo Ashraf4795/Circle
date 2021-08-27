@@ -8,17 +8,11 @@ import androidx.fragment.app.Fragment
 import com.ango.circle.databinding.FragmentExploreBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
 class ExploreFragment : Fragment() {
+    private val TAG = "ExploreFragment"
+    private lateinit var exploreFragmentBinding:FragmentExploreBinding
 
     private val exploreViewModel:ExploreViewModel by viewModel()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
