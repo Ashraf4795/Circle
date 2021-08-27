@@ -1,5 +1,7 @@
 package com.ango.circle.views.home
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +11,7 @@ import com.ango.circle.core.data.model.Circle
 import com.ango.circle.views.home.explore.CategoriesAdapter
 import com.ango.circle.views.home.explore.CirclesAdapter
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputEditText
 
 
 @BindingAdapter("circlesList")
@@ -50,6 +53,28 @@ fun setCategoriesRecyclerViewAdapter(
     } else {
         list?.also { (view.adapter as CategoriesAdapter).updateList(it) }
     }
+}
+
+@BindingAdapter("textChangeCallBack")
+fun setOnchangeListener(view: TextInputEditText, callback: (String) -> Unit) {
+    view.addTextChangedListener(object : TextWatcher {
+
+        override fun afterTextChanged(s: Editable) {
+            callback(s.toString())
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence, start: Int,
+            count: Int, after: Int
+        ) {
+        }
+
+        override fun onTextChanged(
+            s: CharSequence, start: Int,
+            before: Int, count: Int
+        ) {
+        }
+    })
 }
 
 enum class CategoryIdKey {

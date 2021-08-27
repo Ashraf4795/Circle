@@ -17,7 +17,7 @@ class CirclesAdapter(private var circlesList: List<Circle>) :
             binding.circle = item
             binding.dateTxtId.text=updateCircleDate(item)
         }
-        fun updateCircleDate(item: Circle):String{
+        private fun updateCircleDate(item: Circle):String{
             val formatDay=SimpleDateFormat("dd")
             val formatMonth=SimpleDateFormat("MMM")
             val date=item.created?.toDate()

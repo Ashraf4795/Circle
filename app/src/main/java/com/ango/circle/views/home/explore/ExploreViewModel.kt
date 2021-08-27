@@ -12,10 +12,13 @@ import com.ango.circle.core.repos.circle.ICircleRepository
 import com.ango.circle.core.state.LoadingState
 import com.ango.circle.core.state.State
 import com.ango.circle.core.state.SuccessState
+import com.ango.circle.views.SearchViewModel
 import com.ango.circle.views.home.CategoryIdKey
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExploreViewModel(
     private val circleRepository: ICircleRepository,
@@ -23,6 +26,7 @@ class ExploreViewModel(
     private val IO: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
+    private val selectedCategoryLiveData = MutableLiveData<String>()
     private val _circlesLiveData = MutableLiveData<List<Circle>>()
     private var circlesList: List<Circle>? = null
     private val _categoriesLiveData = MutableLiveData<List<Category>>()
@@ -61,6 +65,7 @@ class ExploreViewModel(
     }
 
     val getCirclesOfCategory: (Category) -> Unit = { category ->
+        selectedCategoryLiveData.postValue(category.categoryId?:"ALL")
         if (category.categoryId == CategoryIdKey.ALL.name) {
             circlesList?.also {
                 _circlesLiveData.postValue(it)
@@ -71,7 +76,17 @@ class ExploreViewModel(
     }
 
 
-    private val getCirclesByNameCallBack: (State) -> Unit = {
+    val searchViewModel = SearchViewModel {
+        viewModelScope.launch(IO) {
+            circleRepository.getCirclesListByName(
+                it,
+                selectedCategoryLiveData.value?:"ALL",
+                getCirclesByNameCompleteListiner
+            )
+        }
+    }
+
+    private val getCirclesByNameCompleteListiner: (State) -> Unit = {
 
         when (it) {
             is SuccessState<*> -> _circlesLiveData.postValue(it.data as List<Circle>)
@@ -80,4 +95,14 @@ class ExploreViewModel(
         }
     }
 
+
+    fun getDate(): String {
+        val format = SimpleDateFormat("dd MMM YYYY")
+        val date = Calendar.getInstance().time
+        return "Today ${format.format(date)}"
+    }
+
+    fun getName(): String {
+        return "Hello, Omnia"
+    }
 }

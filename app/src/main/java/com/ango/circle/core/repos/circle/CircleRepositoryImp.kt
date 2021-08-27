@@ -8,7 +8,11 @@ class CircleRepositoryImp(val circleInteractorImpl: ICircleInteractor) : ICircle
         circleInteractorImpl.getCircles(onCompleteListener)
     }
 
-    override suspend fun getCirclesListByName(query: String, onCompleteListener: (State) -> Unit) {
-        circleInteractorImpl.getCirclesByName(query, onCompleteListener)
+    override suspend fun getCirclesListByName(
+        query: String,
+        categoryId: String,
+        onCompleteListener: (State) -> Unit
+    ) {
+        circleInteractorImpl.getCirclesByName(query, categoryId, onCompleteListener)
     }
 }
