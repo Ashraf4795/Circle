@@ -38,7 +38,7 @@ class CircleInteractorImpl(val firestore: FirebaseFirestore) : ICircleInteractor
         categoryId: String,
         onCompleteListener: (State) -> Unit
     ) {
-        if (categoryId != "All") {
+        if (categoryId != "ALL") {
             getCircleByNameWithCategory(query, categoryId, onCompleteListener)
         } else {
             getCircleByNameWithoutCategory(query, onCompleteListener)
@@ -52,7 +52,6 @@ class CircleInteractorImpl(val firestore: FirebaseFirestore) : ICircleInteractor
     ) {
         val circleList = mutableListOf<Circle>()
         firestore.collection(circlesCollection)
-            .whereArrayContains("categoryId", categoryId)
             .orderBy("circleTitle")
             .startAt(query)
             .endAt(query + "\uf8ff")

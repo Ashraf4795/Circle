@@ -15,17 +15,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/categoryLayout_id"
         android:layout_width="wrap_content"
-        android:layout_height="62dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/category_icon_id"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:contentDescription="@string/category_content_Description"
             app:layout_constraintBottom_toTopOf="@+id/category_text_id"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
             android:ellipsize="end"
             android:maxLength="12"
             android:maxLines="1"
-            style="@style/medium_text_style"
+            style="@style/small_text_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

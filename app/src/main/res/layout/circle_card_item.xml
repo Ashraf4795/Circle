@@ -16,7 +16,7 @@
         android:id="@+id/circle_card_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="@dimen/high_radius"
         app:cardElevation="4dp">
 

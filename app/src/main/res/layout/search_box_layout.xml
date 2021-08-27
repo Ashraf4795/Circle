@@ -11,20 +11,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/light_blue"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
             android:insetBottom="0dp"
-            android:minWidth="0dp"
+            android:minWidth="60dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:cornerRadius="@dimen/default_radius"
             app:icon="@drawable/ic_filter_icon"
             app:iconGravity="textStart"
@@ -38,32 +38,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             app:cardCornerRadius="@dimen/default_radius"
-            app:cardElevation="@dimen/cardview_default_elevation"
+            app:cardElevation="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_edittext_id"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/search_msg"
-                android:outlineAmbientShadowColor="@color/white"
+                android:layout_height="match_parent"
+                app:textChangeCallBack="@{viewModel.onChangeListener}"
                 app:boxStrokeColor="@color/light_blue"
                 app:boxStrokeWidth="4dp"
                 app:boxStrokeWidthFocused="4dp"
                 app:startIconDrawable="@drawable/ic_baseline_search_24">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    textChangeCallBack="@{viewModel.onChangeListener}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
+            </androidx.appcompat.widget.SearchView>
         </androidx.cardview.widget.CardView>
 
 

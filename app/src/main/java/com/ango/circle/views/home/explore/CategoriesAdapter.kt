@@ -21,7 +21,7 @@ class CategoriesAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Category, action: (Category) -> Unit) {
-            getImage(item.categoryImg ?: "", binding.categoryIconId)
+            getImage(item.categoryId ?: "", binding.categoryIconId)
             binding.categoryTextId.text = item.categoryName
 
             if (item.is_selected == true) {
@@ -31,16 +31,17 @@ class CategoriesAdapter(
                         R.color.light_blue
                     )
                 )
+                binding.categoryTextId.setTextColor(binding.root.resources.getColor(R.color.white))
             }
         }
 
         private fun getImage(key: String, view: ImageView) {
             when (key) {
-                CategoryIdKey.ALL.name -> view.setBackgroundResource(R.drawable.chat_notification_counter_icon)
-                CategoryIdKey.POPULAR.name -> view.setBackgroundResource(R.drawable.logo)
-                CategoryIdKey.SPORTS.name -> view.setBackgroundResource(R.drawable.border_background)
-                CategoryIdKey.STUDY.name -> view.setBackgroundResource(R.drawable.logo)
-                else -> view.setBackgroundResource(R.drawable.chat_notification_counter_icon)
+                CategoryIdKey.ALL.name -> view.setBackgroundResource(R.drawable.ic_layers)
+                CategoryIdKey.POPULAR.name -> view.setBackgroundResource(R.drawable.ic_soccer_ball)
+                CategoryIdKey.SPORTS.name -> view.setBackgroundResource(R.drawable.ic_running_stick_figure)
+                CategoryIdKey.STUDY.name -> view.setBackgroundResource(R.drawable.ic_soccer_ball)
+                else -> view.setBackgroundResource(R.drawable.ic_soccer_ball)
             }
         }
     }
@@ -52,17 +53,35 @@ class CategoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
+        if (position == 0) {
+            holder.binding.circleCategoryImageId.apply {
+                setPaddingRelative(
+                    20,
+                    paddingTop,
+                    paddingEnd,
+                    paddingBottom
+                )
+            }
+        }
         holder.bind(categoriesList[position], clickAction)
         holdersList.add(holder)
         holder.itemView.setOnClickListener {
-            for (holder in holdersList) {
-                holder.binding.categoryLayoutId.setBackgroundColor(
+            for (holderItem in holdersList) {
+                holderItem.binding.categoryLayoutId.setBackgroundColor(
                     ContextCompat.getColor(
                         holder.binding.root.context,
                         R.color.white
                     )
+
+                )
+                holderItem.binding.categoryTextId.setTextColor(
+                    holder.binding.root.resources.getColor(
+                        R.color.black
+                    )
                 )
             }
+            holder.binding.categoryTextId.setTextColor(holder.binding.root.resources.getColor(R.color.white))
+
             holder.binding.categoryLayoutId.setBackgroundColor(
                 ContextCompat.getColor(
                     holder.binding.root.context,

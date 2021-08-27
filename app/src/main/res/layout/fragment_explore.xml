@@ -18,9 +18,9 @@
         layout="@layout/home_user_info_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         app:date="@{viewModel.getDate()}"
         app:name="@{viewModel.getName()}"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +32,9 @@
         layout="@layout/search_box_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:viewModel="@{viewModel.searchViewModel}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2"
         categoriesList="@{viewModel.categoriesLiveData}"
@@ -53,17 +54,30 @@
         tools:orientation="horizontal"
         tools:layout_height="70dp"/>
 
+    <TextView
+        android:id="@+id/notification_msg_txt_id"
+        style="@style/medium_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/discover_places"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesRecyclerView"
+        tools:text="Discover Places" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginHorizontal="10dp"
         android:id="@+id/circlesRecyclerView"
         circlesList="@{viewModel.circlesLiveData}"
-        android:layout_marginHorizontal="4dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesRecyclerView"
-        tools:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/notification_msg_txt_id"
+
         tools:listitem="@layout/circle_card_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
