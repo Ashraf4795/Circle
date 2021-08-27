@@ -5,6 +5,7 @@ import com.ango.circle.core.di.coreModule
 import com.ango.circle.core.di.interactorModule
 import com.ango.circle.core.di.repoModule
 import com.ango.circle.core.di.viewModelModule
+import com.ango.circle.views.home.di.homeModule
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.core.context.startKoin
 import org.koin.java.KoinJavaComponent.inject
@@ -21,7 +22,8 @@ class App : Application() {
                 coreModule,
                 viewModelModule,
                 repoModule,
-                interactorModule
+                interactorModule,
+                homeModule
             )
         }
     }

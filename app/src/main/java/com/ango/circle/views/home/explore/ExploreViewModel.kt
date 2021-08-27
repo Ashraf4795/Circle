@@ -79,5 +79,4 @@ class ExploreViewModel(
             else -> Log.i("explore", "error")
         }
     }
-
 }
