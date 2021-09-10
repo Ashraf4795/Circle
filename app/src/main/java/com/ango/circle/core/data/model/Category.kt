@@ -4,7 +4,7 @@ import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.PropertyName
 
 data class Category(
-    @DocumentId
+    @get:PropertyName("categoryId")
     var categoryId:String?=null,
 
     @get:PropertyName("category_name")
