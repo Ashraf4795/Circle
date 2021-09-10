@@ -1,3 +1,3 @@
 package com.ango.circle.views
 
-class SearchViewModel(val onChangeListener: (String) -> Unit)
+class SearchViewModel(val onChangeListener: (String?) -> Unit)

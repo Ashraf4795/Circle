@@ -50,7 +50,6 @@ class ExploreViewModel(
             else -> Log.i("explore", "error")
         }
         circlesList?.also {
-            Log.i("explore", "------$it")
             _circlesLiveData.postValue(it)
         }
     }
@@ -65,7 +64,7 @@ class ExploreViewModel(
     }
 
     val getCirclesOfCategory: (Category) -> Unit = { category ->
-        selectedCategoryLiveData.postValue(category.categoryId?:"ALL")
+        selectedCategoryLiveData.postValue(category.categoryId ?: "ALL")
         if (category.categoryId == CategoryIdKey.ALL.name) {
             circlesList?.also {
                 _circlesLiveData.postValue(it)
@@ -76,13 +75,15 @@ class ExploreViewModel(
     }
 
 
-    val searchViewModel = SearchViewModel {
+    val searchViewModel = SearchViewModel { query ->
         viewModelScope.launch(IO) {
-            circleRepository.getCirclesListByName(
-                it,
-                selectedCategoryLiveData.value?:"ALL",
-                getCirclesByNameCompleteListiner
-            )
+            if (query.isNullOrEmpty() || query.isNullOrBlank()) {
+                circleRepository.getCirclesList { getCirclesData(it) }
+            } else {
+                circleRepository.getCirclesListByName(
+                    query, getCirclesByNameCompleteListiner
+                )
+            }
         }
     }
 
@@ -103,6 +104,6 @@ class ExploreViewModel(
     }
 
     fun getName(): String {
-        return "Hello, Omnia"
+        return "Hello, Osama"
     }
 }

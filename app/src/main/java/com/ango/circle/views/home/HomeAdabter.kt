@@ -55,12 +55,20 @@ fun setCategoriesRecyclerViewAdapter(
 }
 
 @BindingAdapter("textChangeCallBack")
-fun setOnchangeListener(view: SearchView, callback: (String) -> Unit) {
-    view.queryHint="Search Circle"
-    view.setOnSearchClickListener {
-        val query=view.query.toString()
-        if (query.isEmpty()){ callback(query) }
-    }
+fun setOnchangeListener(view: SearchView, callback: (String?) -> Unit) {
+    view.queryHint = "Search Circle"
+
+    view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+                callback(query)
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+                 callback(newText)
+            return true
+        }
+    })
 }
 
 enum class CategoryIdKey {

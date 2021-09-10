@@ -6,7 +6,6 @@ interface ICircleInteractor {
     suspend fun getCircles(onCompleteListener: (State) -> Unit)
     suspend fun getCirclesByName(
         query: String,
-        categoryId: String,
         onCompleteListener: (State) -> Unit
     )
 }

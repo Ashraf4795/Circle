@@ -52,6 +52,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:iconifiedByDefault="false"
                 app:textChangeCallBack="@{viewModel.onChangeListener}"
                 app:boxStrokeColor="@color/light_blue"
                 app:boxStrokeWidth="4dp"

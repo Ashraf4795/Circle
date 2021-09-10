@@ -6,7 +6,6 @@ interface ICircleRepository {
     suspend fun getCirclesList(onCompleteListener: (State) -> Unit)
     suspend fun getCirclesListByName(
         query: String,
-        categoryId: String,
         onCompleteListener: (State) -> Unit
     )
 }

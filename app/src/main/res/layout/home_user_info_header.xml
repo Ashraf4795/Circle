@@ -42,6 +42,7 @@
         android:layout_height="52dp"
         app:civ_border_color="@color/white"
         app:civ_border_width="2dp"
+        android:src="@drawable/portrait"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
