@@ -5,13 +5,6 @@
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/exploreFragment">
 
-
-    <fragment
-        android:id="@+id/exploreFragment"
-        android:name="com.ango.circle.views.home.explore.ExploreFragment"
-        android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
-
     <fragment
         android:id="@+id/splashsFragment"
         android:name="com.ango.circle.views.splash.SplashsFragment"
@@ -91,5 +84,10 @@
             android:label="fragment_image_capture"
             tools:layout="@layout/fragment_image_capture" />
     </navigation>
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.ango.circle.views.home.explore.ExploreFragment"
+        android:label="ExploreFragment" />
 
 </navigation>
