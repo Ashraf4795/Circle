@@ -1,6 +1,8 @@
 package com.ango.circle.views.home
 
+
 import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +52,23 @@ fun setCategoriesRecyclerViewAdapter(
     } else {
         list?.also { (view.adapter as CategoriesAdapter).updateList(it) }
     }
+}
+
+@BindingAdapter("textChangeCallBack")
+fun setOnchangeListener(view: SearchView, callback: (String?) -> Unit) {
+    view.queryHint = "Search Circle"
+
+    view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+                callback(query)
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+                 callback(newText)
+            return true
+        }
+    })
 }
 
 enum class CategoryIdKey {

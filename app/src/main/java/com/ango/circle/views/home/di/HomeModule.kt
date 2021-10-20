@@ -6,6 +6,5 @@ import com.ango.circle.views.home.explore.ExploreViewModel
 import org.koin.dsl.module
 
 val homeModule = module {
-    single { ExploreViewModel(get()) }
     single<IHomeInteractor>{ HomeInteractor(get())}
 }

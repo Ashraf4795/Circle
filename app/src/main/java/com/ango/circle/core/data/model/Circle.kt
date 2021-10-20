@@ -21,7 +21,7 @@ data class Circle(
     @get:PropertyName("circle_category")
     var circleCategory: Category? = null,
 
-    @get:PropertyName("category_id")
+    @get:PropertyName("categoryId")
     var categoryId: String?=null,
 
     @get:PropertyName("participants")
